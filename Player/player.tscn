@@ -1,26 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=4 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
-[ext_resource type="Texture2D" uid="uid://7jowo35a6h67" path="res://images/player/Player.png" id="2_tgwdq"]
-[ext_resource type="Texture2D" uid="uid://c8v0a7enyrv8m" path="res://images/player/arm.png" id="3_jck1i"]
+[ext_resource type="Texture2D" uid="uid://bcavhv4vnj3wq" path="res://images/player/player1.png" id="2_5vrwi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mbgr"]
-height = 62.0
+radius = 8.0
+height = 50.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_yu86q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
+position = Vector2(-1, -3)
 shape = SubResource("CapsuleShape2D_6mbgr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
-texture = ExtResource("2_tgwdq")
+[node name="Torso" type="Polygon2D" parent="."]
+position = Vector2(-16, -36)
+texture = ExtResource("2_5vrwi")
+polygon = PackedVector2Array(10.177, 21.5708, 21.1283, 21.4602, 24.8894, 27.1018, 22.8982, 37.9425, 22.1239, 47.7876, 19.2478, 48.0089, 18.5841, 43.6947, 10.9513, 43.6947, 9.29204, 43.6947, 8.5177, 33.9602, 5.75221, 27.4336, 6.30531, 22.677)
+uv = PackedVector2Array(10.177, 21.5708, 21.1283, 21.4602, 24.8894, 27.1018, 22.8982, 37.9425, 22.1239, 47.7876, 19.2478, 48.0089, 18.5841, 43.6947, 10.9513, 43.6947, 9.29204, 43.6947, 8.5177, 33.9602, 5.75221, 27.4336, 6.30531, 22.677)
 
-[node name="Arm" type="Polygon2D" parent="."]
-position = Vector2(5, -16)
-scale = Vector2(1.86842, 1.14853)
-texture = ExtResource("3_jck1i")
-polygon = PackedVector2Array(7.01959, -0.492304, 3.21127, -0.561031, -0.265636, -0.561031, -0.54055, 2.25684, 6.19484, 2.39429)
-uv = PackedVector2Array(7.01959, -0.492304, -0.265636, -0.561031, -0.54055, 2.25684, 6.19484, 2.39429)
+[node name="head" type="Polygon2D" parent="."]
+position = Vector2(-18, -31)
+texture = ExtResource("2_5vrwi")
+polygon = PackedVector2Array(22.5664, 19.2478, 14.823, 20.2434, 11.3938, 18.2522, 9.18142, 16.1504, 9.40266, 13.385, 8.40708, 6.96903, 15.4867, 2.76549, 21.5708, 3.09735, 24.6681, 6.63717, 23.8938, 17.0354)
+uv = PackedVector2Array(22.5664, 19.2478, 14.823, 20.2434, 11.3938, 18.2522, 9.18142, 16.1504, 9.40266, 13.385, 8.40708, 6.96903, 15.4867, 2.76549, 21.5708, 3.09735, 24.6681, 6.63717, 23.8938, 17.0354)
+
+[node name="legright" type="Polygon2D" parent="."]
+position = Vector2(-43, -33)
+texture = ExtResource("2_5vrwi")
+polygon = PackedVector2Array(42.9204, 38.385, 48.0089, 39.3805, 47.8982, 48.8938, 50.7743, 53.7611, 50.6637, 56.4159, 45.1327, 56.969, 43.6947, 53.3186, 43.031, 45.7965, 42.0354, 44.2478)
+uv = PackedVector2Array(42.9204, 38.385, 48.0089, 39.3805, 47.8982, 48.8938, 50.7743, 53.7611, 50.6637, 56.4159, 45.1327, 56.969, 43.6947, 53.3186, 43.031, 45.7965, 42.0354, 44.2478)
+
+[node name="legleft" type="Polygon2D" parent="."]
+position = Vector2(-40, -34)
+texture = ExtResource("2_5vrwi")
+polygon = PackedVector2Array(40.8186, 39.4912, 40.9292, 56.7478, 40.0443, 57.9646, 35.6195, 57.854, 35.3982, 54.0929, 33.2965, 54.2035, 30.9735, 44.469, 34.1814, 37.8319)
+uv = PackedVector2Array(40.8186, 39.4912, 40.9292, 56.7478, 40.0443, 57.9646, 35.6195, 57.854, 35.3982, 54.0929, 33.2965, 54.2035, 30.9735, 44.469, 34.1814, 37.8319)
+
+[node name="armright" type="Polygon2D" parent="."]
+position = Vector2(-40, -26)
+texture = ExtResource("2_5vrwi")
+polygon = PackedVector2Array(49.6681, 16.2611, 50, 24, 50.5531, 34.9558, 48.7832, 35.7301, 44.469, 35.7301, 43.9159, 30.1991, 45.1327, 28.4292, 45.4646, 14.4912)
+uv = PackedVector2Array(49.6681, 16.2611, 50.5531, 34.9558, 48.7832, 35.7301, 44.469, 35.7301, 43.9159, 30.1991, 45.1327, 28.4292, 45.4646, 14.4912)
+
+[node name="armleft" type="Polygon2D" parent="."]
+position = Vector2(-48, -27)
+texture = ExtResource("2_5vrwi")
+polygon = PackedVector2Array(42.2566, 16.0398, 41.8142, 28.4292, 43.6947, 29.9779, 44.1372, 34.4027, 41.5929, 35.9513, 38.6062, 35.0664, 37.1681, 31.3053, 35.177, 30.0885, 35.0664, 20.1327, 37.0575, 15.3761)
+uv = PackedVector2Array(42.2566, 16.0398, 41.8142, 28.4292, 43.6947, 29.9779, 44.1372, 34.4027, 41.5929, 35.9513, 38.6062, 35.0664, 37.1681, 31.3053, 35.177, 30.0885, 35.0664, 20.1327, 37.0575, 15.3761)
