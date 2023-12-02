@@ -19,8 +19,8 @@ position = Vector2(1, 0)
 texture = ExtResource("2_tgwdq")
 
 [node name="Arm" type="Polygon2D" parent="."]
-position = Vector2(-26, -17)
-scale = Vector2(1.03452, 1.33019)
+position = Vector2(5, -16)
+scale = Vector2(1.86842, 1.14853)
 texture = ExtResource("3_jck1i")
-polygon = PackedVector2Array(0.765289, -0.492304, -0.60928, -0.286118, -0.403095, 3.97505, 20.5591, 4.79979, 20.5591, -0.492304)
-uv = PackedVector2Array(0.765289, -0.492304, -0.60928, -0.286118, -0.403095, 3.97505, 20.5591, 4.79979, 20.5591, -0.492304)
+polygon = PackedVector2Array(7.01959, -0.492304, 3.21127, -0.561031, -0.265636, -0.561031, -0.54055, 2.25684, 6.19484, 2.39429)
+uv = PackedVector2Array(7.01959, -0.492304, -0.265636, -0.561031, -0.54055, 2.25684, 6.19484, 2.39429)
