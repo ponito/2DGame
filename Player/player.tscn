@@ -1,26 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=4 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
-[ext_resource type="Texture2D" uid="uid://7jowo35a6h67" path="res://images/player/Player.png" id="2_tgwdq"]
-[ext_resource type="Texture2D" uid="uid://c8v0a7enyrv8m" path="res://images/player/arm.png" id="3_jck1i"]
+[ext_resource type="Texture2D" uid="uid://bcavhv4vnj3wq" path="res://images/player/player1.png" id="2_g7p1i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mbgr"]
-height = 62.0
+radius = 7.0
+height = 44.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_yu86q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
+position = Vector2(1, -5)
 shape = SubResource("CapsuleShape2D_6mbgr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
-texture = ExtResource("2_tgwdq")
+[node name="legright" type="Polygon2D" parent="."]
+position = Vector2(-39, -40)
+texture = ExtResource("2_g7p1i")
+polygon = PackedVector2Array(40.1967, 39.4249, 40.924, 57.4249, 34.924, 57.6067, 33.2876, 51.0613, 30.7422, 45.2431, 33.8331, 38.1522)
+uv = PackedVector2Array(40.1967, 39.4249, 40.924, 57.4249, 34.924, 57.6067, 33.2876, 51.0613, 30.7422, 45.2431, 33.8331, 38.1522)
 
-[node name="Arm" type="Polygon2D" parent="."]
-position = Vector2(-26, -17)
-scale = Vector2(1.03452, 1.33019)
-texture = ExtResource("3_jck1i")
-polygon = PackedVector2Array(0.765289, -0.492304, -0.60928, -0.286118, -0.403095, 3.97505, 20.5591, 4.79979, 20.5591, -0.492304)
-uv = PackedVector2Array(0.765289, -0.492304, -0.60928, -0.286118, -0.403095, 3.97505, 20.5591, 4.79979, 20.5591, -0.492304)
+[node name="legleft" type="Polygon2D" parent="."]
+position = Vector2(-42, -39)
+texture = ExtResource("2_g7p1i")
+polygon = PackedVector2Array(48.924, 39.2431, 42.5604, 39.0613, 41.8331, 45.2431, 44.5604, 55.9704, 44.5604, 57.2431, 50.1967, 56.8795, 48.7422, 48.334)
+uv = PackedVector2Array(48.924, 39.2431, 42.5604, 39.0613, 41.8331, 45.2431, 44.5604, 55.9704, 44.5604, 57.2431, 50.1967, 56.8795, 48.7422, 48.334)
+
+[node name="torso" type="Polygon2D" parent="."]
+position = Vector2(-15, -40)
+texture = ExtResource("2_g7p1i")
+polygon = PackedVector2Array(8.24561, 21.4945, 22.3356, 22.8644, 23.7055, 28.3438, 21.9442, 46.3478, 21.3571, 48.5004, 19.2045, 48.109, 19.2045, 43.8037, 10.7896, 43.608, 9.61546, 42.0425, 9.41977, 34.2147, 6.09296, 28.3438)
+uv = PackedVector2Array(8.24561, 21.4945, 22.3356, 22.8644, 23.7055, 28.3438, 21.9442, 46.3478, 21.3571, 48.5004, 19.2045, 48.109, 19.2045, 43.8037, 10.7896, 43.608, 9.61546, 42.0425, 9.41977, 34.2147, 6.09296, 28.3438)
+
+[node name="head" type="Polygon2D" parent="."]
+position = Vector2(-17, -34)
+texture = ExtResource("2_g7p1i")
+polygon = PackedVector2Array(23.9012, 19.1462, 18.8131, 20.1247, 12.9423, 19.929, 8.83269, 15.6237, 8.4413, 4.86047, 20.9658, 1.92505, 24.4883, 6.62172)
+uv = PackedVector2Array(23.9012, 19.1462, 18.8131, 20.1247, 12.9423, 19.929, 8.83269, 15.6237, 8.4413, 4.86047, 20.9658, 1.92505, 24.4883, 6.62172)
+
+[node name="armleft" type="Polygon2D" parent="."]
+position = Vector2(-46, -31)
+texture = ExtResource("2_g7p1i")
+polygon = PackedVector2Array(43.8609, 35.639, 43.6559, 29.1841, 41.8117, 28.7743, 42.4264, 15.8644, 36.9961, 14.9423, 35.4592, 20.8849, 35.3568, 29.4915, 37.3035, 31.4382, 38.7379, 35.1267)
+uv = PackedVector2Array(43.8609, 35.639, 43.6559, 29.1841, 41.8117, 28.7743, 42.4264, 15.8644, 36.9961, 14.9423, 35.4592, 20.8849, 35.3568, 29.4915, 37.3035, 31.4382, 38.7379, 35.1267)
+
+[node name="armright" type="Polygon2D" parent="."]
+position = Vector2(-40, -31)
+texture = ExtResource("2_g7p1i")
+polygon = PackedVector2Array(44.8796, 15.6524, 45, 25, 44.8796, 29.1812, 44.2032, 31.3232, 44.3159, 35.1564, 49.6147, 35.8328, 49.6147, 35.8328, 50.0656, 31.7742, 49.7274, 30.3086, 49, 22, 49.7274, 17.7945, 46.9089, 14.0741)
+uv = PackedVector2Array(44.8796, 15.6524, 44.8796, 29.1812, 44.2032, 31.3232, 44.3159, 35.1564, 49.6147, 35.8328, 49.6147, 35.8328, 50.0656, 31.7742, 49.7274, 30.3086, 49.7274, 17.7945, 46.9089, 14.0741)
