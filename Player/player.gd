@@ -3,26 +3,47 @@ extends CharacterBody2D
 const Health = 100
 const SPEED = 220.0
 const JUMP_VELOCITY = -450.0
+var isWallSliding = 0
+var isLeftWallSliding = false
+var isRightWallSliding = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+	# Check for wall sliding
+	isWallSliding = max(isWallSliding - delta, 0)
+	if (isWallSliding == 0):
+			isLeftWallSliding = true
+			isRightWallSliding = false
+			
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
-
+		if isWallSliding > 0 and velocity.y > 0:
+			velocity.y = min(velocity.y + gravity * delta / 2, SPEED / 4)
+		else:
+			velocity.y += gravity * delta
+			
+	if is_on_wall_only():
+		isWallSliding = 0.2
+		if Input.is_action_pressed("Left"):
+			isLeftWallSliding = true
+			isRightWallSliding = false
+		elif Input.is_action_pressed("Right"):
+			isLeftWallSliding = false
+			isRightWallSliding = true
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
-		if is_on_wall() and Input.is_action_pressed("Left"):
-			velocity.x = SPEED
-			velocity.y = JUMP_VELOCITY
-		if is_on_wall() and Input.is_action_pressed("Right"):
-			velocity.x = -SPEED
-			velocity.y = JUMP_VELOCITY
+		elif isLeftWallSliding:
+			velocity.x = SPEED * 3 / 4
+			velocity.y = JUMP_VELOCITY * 4 / 5
+		elif isRightWallSliding:
+			velocity.x = -SPEED * 3 / 4
+			velocity.y = JUMP_VELOCITY * 4 / 5
 		
 
 	# Get the input direction and handle the movement/deceleration.
