@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dne3470jshe2n"]
+[gd_scene load_steps=3 format=3 uid="uid://dne3470jshe2n"]
 
 [ext_resource type="PackedScene" uid="uid://bf0qqi1cmv0s4" path="res://TileMap.tscn" id="1_1sdfj"]
+[ext_resource type="PackedScene" uid="uid://bqfrw14wap3v2" path="res://Player/player.tscn" id="2_q18dc"]
 
 [node name="game" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_1sdfj")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_q18dc")]
+position = Vector2(435, 258)
