@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqfrw14wap3v2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hurxd"]
+[ext_resource type="Texture2D" uid="uid://df7mvhnrq3qq6" path="res://images/Slime.png" id="1_3jy8f"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_l0tox"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hurxd"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
@@ -11,4 +11,4 @@ position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_hurxd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("ImageTexture_l0tox")
+texture = ExtResource("1_3jy8f")
