@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+const Health = 100
 const SPEED = 220.0
 const JUMP_VELOCITY = -450.0
 
