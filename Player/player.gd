@@ -60,8 +60,15 @@ func _physics_process(delta):
 	var direction = Input.get_axis("Left", "Right")
 	if Input.is_action_pressed("Right"):
 		velocity.x = min(velocity.x + SPEED * delta * 4, SPEED)
+		$AnimationPlayer.play("Move")
+		get_node("Sprite").scale.x= 1
+		get_node("Sprite").position.x= 0
 	elif Input.is_action_pressed("Left"):
 			velocity.x = max(velocity.x - SPEED * delta * 4, -SPEED)
+			$AnimationPlayer.play("Move")
+			get_node("Sprite").scale.x= -1
+			get_node("Sprite").position.x= -3.5
+			
 	elif is_on_floor():
 		velocity.x = lerp(velocity.x, 0., 0.2)
 
@@ -75,11 +82,9 @@ func _physics_process(delta):
 
 
 
+
+
 #Animationen Idleing
 func _ready():
 	$AnimationPlayer.play("Idle")
-
-
-
-
 
