@@ -14,12 +14,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta):
 	# Check for wall sliding
 	isWallSliding = max(isWallSliding - delta, 0)
+	if not is_on_wall():
+		isWallSliding = 0
 	if (isWallSliding == 0):
 			isLeftWallSliding = false
 			isRightWallSliding = false
 			
 			
-	print(isWallSliding)
 	# Add the gravity.
 	if not is_on_floor():
 		if isWallSliding > 0 and velocity.y > 0:
