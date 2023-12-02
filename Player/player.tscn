@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=8 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
 [ext_resource type="Texture2D" uid="uid://bcavhv4vnj3wq" path="res://images/player/player1.png" id="2_5vrwi"]
@@ -10,7 +10,6 @@ height = 50.0
 [sub_resource type="Animation" id="Animation_rx1o1"]
 resource_name = "Idle"
 length = 4.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -72,8 +71,6 @@ _data = {
 "Idle1": SubResource("Animation_oq3ew"),
 "RESET": SubResource("Animation_7unyw")
 }
-
-[sub_resource type="AnimationRootNode" id="AnimationRootNode_iw70c"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_yu86q")
@@ -176,15 +173,25 @@ rest = Transform2D(1, 0, 0, 1, -7.99999, -0.0104541)
 position = Vector2(-9.00261, 1.98824)
 rest = Transform2D(1, 0, 0, 1, -9.00261, 1.98824)
 
+[node name="legright1" type="Bone2D" parent="Skeleton2D/hip"]
+scale = Vector2(0, 0)
+
+[node name="legright2" type="Bone2D" parent="Skeleton2D/hip/legright1"]
+scale = Vector2(0, 0)
+
+[node name="legright3" type="Bone2D" parent="Skeleton2D/hip/legright1/legright2"]
+scale = Vector2(0, 0)
+
+[node name="legleft1" type="Bone2D" parent="Skeleton2D/hip"]
+scale = Vector2(0, 0)
+
+[node name="legleft2" type="Bone2D" parent="Skeleton2D/hip/legleft1"]
+scale = Vector2(0, 0)
+
+[node name="legleft3" type="Bone2D" parent="Skeleton2D/hip/legleft1/legleft2"]
+scale = Vector2(0, 0)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7chyy")
 }
-autoplay = "Idle"
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_7chyy")
-}
-tree_root = SubResource("AnimationRootNode_iw70c")
-anim_player = NodePath("../AnimationPlayer")

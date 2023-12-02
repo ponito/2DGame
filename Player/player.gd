@@ -11,6 +11,11 @@ var isRightWallSliding = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
+
+
+
+
+
 func _physics_process(delta):
 	# Check for wall sliding
 	isWallSliding = max(isWallSliding - delta, 0)
@@ -61,3 +66,20 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0., 0.2)
 
 	move_and_slide()
+
+
+
+
+
+
+
+
+
+#Animationen Idleing
+func _ready():
+	$AnimationPlayer.play("Idle")
+
+
+
+
+
