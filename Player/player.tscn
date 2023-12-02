@@ -49,3 +49,14 @@ position = Vector2(-40, -31)
 texture = ExtResource("2_g7p1i")
 polygon = PackedVector2Array(44.8796, 15.6524, 45, 25, 44.8796, 29.1812, 44.2032, 31.3232, 44.3159, 35.1564, 49.6147, 35.8328, 49.6147, 35.8328, 50.0656, 31.7742, 49.7274, 30.3086, 49, 22, 49.7274, 17.7945, 46.9089, 14.0741)
 uv = PackedVector2Array(44.8796, 15.6524, 44.8796, 29.1812, 44.2032, 31.3232, 44.3159, 35.1564, 49.6147, 35.8328, 49.6147, 35.8328, 50.0656, 31.7742, 49.7274, 30.3086, 49.7274, 17.7945, 46.9089, 14.0741)
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="hip" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(0, 3)
+
+[node name="chest" type="Bone2D" parent="Skeleton2D/hip"]
+position = Vector2(0, -18)
+
+[node name="neck" type="Bone2D" parent="Skeleton2D/hip/chest"]
+position = Vector2(0, -6)
