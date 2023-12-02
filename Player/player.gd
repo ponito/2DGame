@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const Health = 100
 const SPEED = 220.0
-const JUMP_VELOCITY = -450.0
+const JUMP_VELOCITY = -400.0
 var isWallSliding = 0
 var isLeftWallSliding = false
 var isRightWallSliding = false
@@ -14,9 +14,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta):
 	# Check for wall sliding
 	isWallSliding = max(isWallSliding - delta, 0)
+	if not is_on_wall():
+		isWallSliding = 0
 	if (isWallSliding == 0):
-			isLeftWallSliding = true
+			isLeftWallSliding = false
 			isRightWallSliding = false
+			
 			
 	# Add the gravity.
 	if not is_on_floor():
@@ -26,11 +29,12 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 			
 	if is_on_wall_only():
-		isWallSliding = 0.2
 		if Input.is_action_pressed("Left"):
+			isWallSliding = 0.2
 			isLeftWallSliding = true
 			isRightWallSliding = false
 		elif Input.is_action_pressed("Right"):
+			isWallSliding = 0.2
 			isLeftWallSliding = false
 			isRightWallSliding = true
 	
