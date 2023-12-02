@@ -1,25 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=5 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
-[ext_resource type="Texture2D" uid="uid://bcavhv4vnj3wq" path="res://images/player/player1.png" id="2_g7p1i"]
+[ext_resource type="Texture2D" uid="uid://7jowo35a6h67" path="res://images/player/Player.png" id="2_tgwdq"]
+[ext_resource type="Texture2D" uid="uid://c8v0a7enyrv8m" path="res://images/player/arm.png" id="3_jck1i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mbgr"]
-radius = 7.0
-height = 44.0
+height = 62.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_yu86q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -5)
+position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_6mbgr")
 
-[node name="legright" type="Polygon2D" parent="."]
-position = Vector2(-39, -40)
-texture = ExtResource("2_g7p1i")
-polygon = PackedVector2Array(40.1967, 39.4249, 40.924, 57.4249, 34.924, 57.6067, 33.2876, 51.0613, 30.7422, 45.2431, 33.8331, 38.1522)
-uv = PackedVector2Array(40.1967, 39.4249, 40.924, 57.4249, 34.924, 57.6067, 33.2876, 51.0613, 30.7422, 45.2431, 33.8331, 38.1522)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("2_tgwdq")
 
+<<<<<<< HEAD
 [node name="legleft" type="Polygon2D" parent="."]
 position = Vector2(-42, -39)
 texture = ExtResource("2_g7p1i")
@@ -60,3 +59,11 @@ position = Vector2(0, -18)
 
 [node name="neck" type="Bone2D" parent="Skeleton2D/hip/chest"]
 position = Vector2(0, -6)
+=======
+[node name="Arm" type="Polygon2D" parent="."]
+position = Vector2(5, -16)
+scale = Vector2(1.86842, 1.14853)
+texture = ExtResource("3_jck1i")
+polygon = PackedVector2Array(7.01959, -0.492304, 3.21127, -0.561031, -0.265636, -0.561031, -0.54055, 2.25684, 6.19484, 2.39429)
+uv = PackedVector2Array(7.01959, -0.492304, -0.265636, -0.561031, -0.54055, 2.25684, 6.19484, 2.39429)
+>>>>>>> 4e77f7e9c572e227ee74ce1042ec67cd9585e33c
