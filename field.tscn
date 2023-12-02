@@ -1,3 +1,5 @@
-[gd_scene format=3 uid="uid://oo6qn3u0bs5b"]
+[gd_scene format=3 uid="uid://vs2joc878c1p"]
 
 [node name="Field" type="Node2D"]
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
