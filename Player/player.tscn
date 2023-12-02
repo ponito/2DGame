@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=5 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
-[ext_resource type="Texture2D" uid="uid://7jowo35a6h67" path="res://images/Player.png" id="2_tgwdq"]
+[ext_resource type="Texture2D" uid="uid://7jowo35a6h67" path="res://images/player/Player.png" id="2_tgwdq"]
+[ext_resource type="Texture2D" uid="uid://c8v0a7enyrv8m" path="res://images/player/arm.png" id="3_jck1i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mbgr"]
 height = 62.0
@@ -16,3 +17,10 @@ shape = SubResource("CapsuleShape2D_6mbgr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
 texture = ExtResource("2_tgwdq")
+
+[node name="Arm" type="Polygon2D" parent="."]
+position = Vector2(5, -16)
+scale = Vector2(1.86842, 1.14853)
+texture = ExtResource("3_jck1i")
+polygon = PackedVector2Array(7.01959, -0.492304, 3.21127, -0.561031, -0.265636, -0.561031, -0.54055, 2.25684, 6.19484, 2.39429)
+uv = PackedVector2Array(7.01959, -0.492304, -0.265636, -0.561031, -0.54055, 2.25684, 6.19484, 2.39429)
