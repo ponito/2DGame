@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=5 format=3 uid="uid://vs2joc878c1p"]
+=======
+[gd_scene load_steps=4 format=3 uid="uid://oo6qn3u0bs5b"]
+>>>>>>> d5aa7c262dfb76ae98bb4dc993eae6c0abefbc19
 
 [ext_resource type="Texture2D" uid="uid://dtpept4n6ikq1" path="res://images/TileMap.png" id="1_yevge"]
 [ext_resource type="Texture2D" uid="uid://df7mvhnrq3qq6" path="res://images/Slime.png" id="2_y770o"]
