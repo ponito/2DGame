@@ -37,10 +37,12 @@ func _physics_process(delta):
 			isWallSliding = 0.2
 			isLeftWallSliding = true
 			isRightWallSliding = false
+			$AnimationPlayer.play("Hang")
 		elif Input.is_action_pressed("Right"):
 			isWallSliding = 0.2
 			isLeftWallSliding = false
 			isRightWallSliding = true
+			$AnimationPlayer.play("Hang")
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
@@ -81,8 +83,8 @@ func _physics_process(delta):
 
 
 #Animationen Idleing wenn Charackter sich nichtmehr nach rechts oder links bewegt
-func _process(delta):
-	if ( velocity.x >= -1 && velocity.x < 1 ):
-		$AnimationPlayer.play("Idle")
+#func _process(delta):
+	#if ( velocity.x >= -1 && velocity.x < 1 && velocity.y < 1 && velocity.y > -1 ):
+		#$AnimationPlayer.play("Idle")
 
 
