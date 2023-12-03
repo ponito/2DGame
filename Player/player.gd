@@ -6,7 +6,6 @@ const JUMP_VELOCITY = -400.0
 var isWallSliding = 0
 var isLeftWallSliding = false
 var isRightWallSliding = false
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -73,10 +72,7 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0., 0.2)
 
 	move_and_slide()
-
-
-
-
+	
 
 
 
@@ -85,6 +81,8 @@ func _physics_process(delta):
 
 
 #Animationen Idleing
-func _ready():
-	$AnimationPlayer.play("Idle")
+func _process(delta):
+	if ( velocity.x >= -1 && velocity.x < 1 ):
+		$AnimationPlayer.play("Idle")
+
 
