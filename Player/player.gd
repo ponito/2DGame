@@ -80,7 +80,7 @@ func _physics_process(delta):
 
 
 
-#Animationen Idleing
+#Animationen Idleing wenn Charackter sich nichtmehr nach rechts oder links bewegt
 func _process(delta):
 	if ( velocity.x >= -1 && velocity.x < 1 ):
 		$AnimationPlayer.play("Idle")
