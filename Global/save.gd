@@ -3,6 +3,9 @@ extends Node
 
 const SAVE_PATH  = "res://savegame.bin"
 
+
+
+
 func saveGame():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	var data: Dictionary = {
@@ -22,4 +25,6 @@ func loadGame():
 			if curren_line:
 				master.playerHealth = curren_line["playerHealth"]
 				master.playerKnowledge = curren_line["playerKnowledge"]
+
+
 

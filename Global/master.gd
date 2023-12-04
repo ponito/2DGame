@@ -1,3 +1,3 @@
 extends Node
-var playerHealth = 0
+var playerHealth = 200
 var playerKnowledge = 0
