@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmaqnjstdio8f"]
+
+[ext_resource type="Texture2D" uid="uid://df7mvhnrq3qq6" path="res://images/Slime.png" id="1_8esk5"]
+[ext_resource type="Script" path="res://Enemies/slimeblue.gd" id="1_gqoko"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hx45g"]
+radius = 8.0
+height = 22.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjua4"]
+atlas = ExtResource("1_8esk5")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0hk7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjua4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_msmcy"]
+radius = 298.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o48k2"]
+height = 26.0
+
+[node name="slimeblue" type="CharacterBody2D"]
+script = ExtResource("1_gqoko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_hx45g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.96046e-08, -2)
+scale = Vector2(0.802083, 0.822917)
+sprite_frames = SubResource("SpriteFrames_o0hk7")
+animation = &"idle"
+
+[node name="EnemyVision" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyVision"]
+shape = SubResource("CircleShape2D_msmcy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_o48k2")
+
+[connection signal="body_entered" from="EnemyVision" to="." method="_on_enemy_vision_body_entered"]
+[connection signal="body_exited" from="EnemyVision" to="." method="_on_enemy_vision_body_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

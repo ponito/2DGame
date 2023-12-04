@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-const Health = 100
+
 const SPEED = 220.0
 const JUMP_VELOCITY = -400.0
+var Health = 100
 var isWallSliding = 0
 var isLeftWallSliding = false
 var isRightWallSliding = false
@@ -17,6 +18,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+	#Health
+	if Health <= 0:
+		queue_free()
+		get_tree().change_scene_to_file("res://menu.tscn")
+	
 	# Check for wall sliding
 	isWallSliding = max(isWallSliding - delta, 0)
 	if not is_on_wall():
