@@ -3049,3 +3049,6 @@ shape = SubResource("CapsuleShape2D_6mbgr")
 libraries = {
 "": SubResource("AnimationLibrary_7chyy")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.8, 1.8)
