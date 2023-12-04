@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<Updatedupstreamrun/main_scene="res://menu.tscn"
 
+[autoload]
+
+master="*res://Global/master.gd"
+save="*res://Global/save.gd"
+
 [input]
 
 Right={
