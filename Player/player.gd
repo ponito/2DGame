@@ -27,7 +27,6 @@ func _physics_process(delta):
 			
 	# Add the gravity.
 	if not is_on_floor():
-		$AnimationPlayer.play("Fall")
 		if isWallSliding > 0 and velocity.y > 0:
 			velocity.y = min(velocity.y + gravity * delta / 2, SPEED / 4)
 		else:
@@ -44,12 +43,10 @@ func _physics_process(delta):
 			isWallSliding = 0.2
 			isLeftWallSliding = true
 			isRightWallSliding = false
-			$AnimationPlayer.play("Hang")
 		elif Input.is_action_pressed("Right"):
 			isWallSliding = 0.2
 			isLeftWallSliding = false
 			isRightWallSliding = true
-			$AnimationPlayer.play("Hang")
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
@@ -68,14 +65,10 @@ func _physics_process(delta):
 	var direction = Input.get_axis("Left", "Right")
 	if Input.is_action_pressed("Right"):
 		velocity.x = min(velocity.x + SPEED * delta * 4, SPEED)
-		if is_on_floor():
-			$AnimationPlayer.play("Move")
 		get_node("Sprite").scale.x= 1
 		get_node("Sprite").position.x= 0
 	elif Input.is_action_pressed("Left"):
 			velocity.x = max(velocity.x - SPEED * delta * 4, -SPEED)
-			if is_on_floor():
-				$AnimationPlayer.play("Move")
 			get_node("Sprite").scale.x= -1
 			get_node("Sprite").position.x= -3.5
 		
@@ -94,9 +87,5 @@ func _physics_process(delta):
 
 
 
-#Animationen Idleing wenn Charackter sich nichtmehr nach rechts oder links bewegt
-func _process(delta):
-	if ( velocity.x >= -1 && velocity.x < 1 && velocity.y < 1 && velocity.y > -1):
-		$AnimationPlayer.play("Idle")
 
 
