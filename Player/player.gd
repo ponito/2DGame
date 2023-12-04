@@ -8,7 +8,8 @@ var isLeftWallSliding = false
 var isRightWallSliding = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+#When needed create variable for Animation Player for Animation cutting
+@onready var anim = get_node("AnimationPlayer")
 
 
 
@@ -32,10 +33,6 @@ func _physics_process(delta):
 		else:
 			velocity.y += gravity * delta
 			
-		# Stop Animation
-	#if is_on_floor():
-		#if AnimationPlayer.current_animation("Fall"):
-			#$AnimationPlayer.stop()
 		
 		
 	if is_on_wall_only():
@@ -43,13 +40,18 @@ func _physics_process(delta):
 			isWallSliding = 0.2
 			isLeftWallSliding = true
 			isRightWallSliding = false
+			if velocity.y >= 0:
+				anim.play("Hang")
 		elif Input.is_action_pressed("Right"):
 			isWallSliding = 0.2
 			isLeftWallSliding = false
 			isRightWallSliding = true
+			if velocity.y >= 0:
+				anim.play("Hang")
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
+		anim.play("Jump")
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		elif isLeftWallSliding:
@@ -67,17 +69,21 @@ func _physics_process(delta):
 		velocity.x = min(velocity.x + SPEED * delta * 4, SPEED)
 		get_node("Sprite").scale.x= 1
 		get_node("Sprite").position.x= 0
+		if velocity.y == 0:
+			anim.play("Move")
 	elif Input.is_action_pressed("Left"):
 			velocity.x = max(velocity.x - SPEED * delta * 4, -SPEED)
 			get_node("Sprite").scale.x= -1
 			get_node("Sprite").position.x= -3.5
-		
-		
-		
+			if velocity.y == 0:
+				anim.play("Move")
 		
 	elif is_on_floor():
 		velocity.x = lerp(velocity.x, 0., 0.2)
-
+		if velocity.y == 0:
+			anim.play("Idle")
+	if velocity.y > 0 and isWallSliding <= 0:
+		anim.play("Fall")
 	move_and_slide()
 	
 
