@@ -8,7 +8,6 @@ const SAVE_PATH  = "res://savegame.bin"
 
 func saveGame():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	print("BU")
 	var data: Dictionary = {
 		"playerHealth": master.playerHealth,
 		"maxplayerHealth": master.maxplayerHealth,
