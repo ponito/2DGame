@@ -8,8 +8,10 @@ const SAVE_PATH  = "res://savegame.bin"
 
 func saveGame():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	print("BU")
 	var data: Dictionary = {
 		"playerHealth": master.playerHealth,
+		"maxplayerHealth": master.maxplayerHealth,
 		"playerKnowledge": master.playerKnowledge
 		
 	}
@@ -24,6 +26,7 @@ func loadGame():
 			var curren_line = JSON.parse_string(file.get_line())
 			if curren_line:
 				master.playerHealth = curren_line["playerHealth"]
+				master.maxplayerHealth = curren_line["maxplayerHealth"]
 				master.playerKnowledge = curren_line["playerKnowledge"]
 
 

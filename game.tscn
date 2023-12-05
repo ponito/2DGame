@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dne3470jshe2n"]
+[gd_scene load_steps=6 format=3 uid="uid://dne3470jshe2n"]
 
 [ext_resource type="PackedScene" uid="uid://bf0qqi1cmv0s4" path="res://TileMap.tscn" id="1_1sdfj"]
 [ext_resource type="PackedScene" uid="uid://bqfrw14wap3v2" path="res://Player/player.tscn" id="2_q18dc"]
 [ext_resource type="PackedScene" uid="uid://bmaqnjstdio8f" path="res://Enemies/slimeblue.tscn" id="3_31g8n"]
+[ext_resource type="PackedScene" uid="uid://bp4ipb8ajqkg4" path="res://Objects/savepoint.tscn" id="4_vldtn"]
 
 [sub_resource type="GDScript" id="GDScript_j5vrg"]
 script/source = "extends Label
@@ -26,6 +27,8 @@ func _process(delta):
 [node name="player" type="Node2D" parent="."]
 
 [node name="player" parent="player" instance=ExtResource("2_q18dc")]
+top_level = true
+visibility_layer = 16
 position = Vector2(435, 258)
 
 [node name="enemies" type="Node2D" parent="."]
@@ -41,3 +44,6 @@ offset_top = 35.0
 offset_right = 121.0
 offset_bottom = 58.0
 script = SubResource("GDScript_j5vrg")
+
+[node name="savepoint" parent="." instance=ExtResource("4_vldtn")]
+position = Vector2(558, 156)

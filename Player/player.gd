@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 220.0
 const JUMP_VELOCITY = -400.0
 var Health = master.playerHealth
+var Knowledge = master.playerKnowledge
 var isWallSliding = 0
 var isLeftWallSliding = false
 var isRightWallSliding = false

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp4ipb8ajqkg4"]
+
+[ext_resource type="Script" path="res://Objects/savepoint.gd" id="1_f3xy3"]
+[ext_resource type="Texture2D" uid="uid://q7r6itt84vcw" path="res://images/player/twig.png" id="2_8sga5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_clbt3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8sga5")
+}],
+"loop": true,
+"name": &"base",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjqxc"]
+size = Vector2(32, 36)
+
+[node name="savepoint" type="Node2D"]
+script = ExtResource("1_f3xy3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.55271e-15, -13)
+scale = Vector2(1, 1.28125)
+sprite_frames = SubResource("SpriteFrames_clbt3")
+animation = &"base"
+
+[node name="savezonearea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="savezonearea"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_rjqxc")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -5.0
+offset_top = -65.0
+offset_right = 5.0
+offset_bottom = -42.0
+text = "E"
+
+[connection signal="body_entered" from="savezonearea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="savezonearea" to="." method="_on_area_2d_body_exited"]

@@ -2896,6 +2896,7 @@ script = ExtResource("1_yu86q")
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="armleft" type="Polygon2D" parent="Sprite"]
+visibility_layer = 16
 position = Vector2(-0.190178, -0.449325)
 rotation = -1.48377
 offset = Vector2(-37.5987, -11.5856)
@@ -2906,6 +2907,7 @@ uv = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748, 50.
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0.37, 0.37, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0.74, 0, 0, 0.37), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0.37, 0.37, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
 [node name="Torso" type="Polygon2D" parent="Sprite"]
+visibility_layer = 16
 offset = Vector2(-16, -36)
 texture = ExtResource("2_5vrwi")
 skeleton = NodePath("../Skeleton2D")
@@ -2913,6 +2915,7 @@ polygon = PackedVector2Array(24.2097, 25.4576, 18.1364, 21.0483, 7.98669, 22.213
 uv = PackedVector2Array(24.2097, 25.4576, 18.1364, 21.0483, 7.98669, 22.213, 5.65724, 27.5374, 8.73544, 36.1065, 10.3993, 47.0882, 21.797, 47.5042)
 
 [node name="head" type="Polygon2D" parent="Sprite"]
+visibility_layer = 16
 position = Vector2(0.0457916, -0.213354)
 rotation = 0.0435499
 offset = Vector2(-19.3691, -29.9718)
@@ -2923,6 +2926,7 @@ uv = PackedVector2Array(24.3956, 4.11758, 25.2747, 8.73296, 24.8352, 16.8648, 22
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5)]
 
 [node name="legright" type="Polygon2D" parent="Sprite"]
+visibility_layer = 16
 offset = Vector2(-43, -34)
 texture = ExtResource("2_5vrwi")
 skeleton = NodePath("../Skeleton2D")
@@ -2931,6 +2935,7 @@ uv = PackedVector2Array(47.9414, 39.4328, 42.5435, 39.2498, 42.635, 45.3797, 43.
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/legright1", PackedFloat32Array(0.43, 0.86, 0, 0, 0, 0, 0, 0), "hip/legright1/legright2", PackedFloat32Array(0, 0, 0.43, 0.43, 0, 0, 0.43, 0.43), "hip/legright1/legright2/legright3", PackedFloat32Array(0, 0, 0, 0, 0.43, 0.43, 0, 0), "hip/legleft1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/legleft1/legleft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "hip/legleft1/legleft2/legleft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="legleft" type="Polygon2D" parent="Sprite"]
+visibility_layer = 16
 offset = Vector2(-40, -34)
 texture = ExtResource("2_5vrwi")
 skeleton = NodePath("../Skeleton2D")
@@ -2939,6 +2944,7 @@ uv = PackedVector2Array(40.2562, 39.0668, 33.7603, 38.9753, 30.8326, 44.7393, 32
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legright1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legright1/legright2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legright1/legright2/legright3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legleft1", PackedFloat32Array(0.86, 0.43, 0, 0, 0, 0, 0, 0, 0.43), "hip/legleft1/legleft2", PackedFloat32Array(0, 0, 0.43, 0.43, 0, 0, 0.43, 0.43, 0.43), "hip/legleft1/legleft2/legleft3", PackedFloat32Array(0, 0, 0, 0, 0.43, 0.43, 0, 0, 0)]
 
 [node name="armright" type="Polygon2D" parent="Sprite"]
+visibility_layer = 16
 position = Vector2(-0.426141, -0.449327)
 rotation = 1.56826
 offset = Vector2(-48.5292, -8.54925)
