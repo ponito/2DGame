@@ -4,6 +4,7 @@ var close = false
 func _ready():
 	#$Label.show()
 	$Label.hide()
+	print($Label.visible)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

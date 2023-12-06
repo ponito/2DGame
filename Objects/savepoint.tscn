@@ -33,12 +33,13 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_rjqxc")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -5.0
 offset_top = -65.0
 offset_right = 5.0
 offset_bottom = -42.0
 text = "E"
+visible_characters = 0
+visible_ratio = 0.0
 
 [connection signal="body_entered" from="savezonearea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="savezonearea" to="." method="_on_area_2d_body_exited"]
