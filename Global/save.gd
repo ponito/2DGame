@@ -11,7 +11,8 @@ func saveGame():
 	var data: Dictionary = {
 		"playerHealth": master.playerHealth,
 		"maxplayerHealth": master.maxplayerHealth,
-		"playerKnowledge": master.playerKnowledge
+		"playerKnowledge": master.playerKnowledge,
+		"maxplayerStamina": master.maxplayerStamina
 		
 	}
 	var jstr = JSON.stringify(data)
@@ -27,6 +28,7 @@ func loadGame():
 				master.playerHealth = curren_line["playerHealth"]
 				master.maxplayerHealth = curren_line["maxplayerHealth"]
 				master.playerKnowledge = curren_line["playerKnowledge"]
+				master.maxplayerStamina = curren_line["maxplayerStamina"]
 
 
 

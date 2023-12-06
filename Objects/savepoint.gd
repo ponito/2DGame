@@ -10,6 +10,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("E"):
 		if close == true:
+			get_node("../player/player").Stamina = master.maxplayerStamina #Instant Stamina Restore
 			master.playerHealth = get_node("../player/player").Health #Saving of Health
 			get_node("../player/player").Health = master.maxplayerHealth #Instant Restoration
 			master.playerHealth = master.maxplayerHealth #Only for Hp Restoration, overwrites Upper Save
