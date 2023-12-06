@@ -1,7 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=16 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
 [ext_resource type="Texture2D" uid="uid://bcavhv4vnj3wq" path="res://images/player/player1.png" id="2_5vrwi"]
+[ext_resource type="Theme" uid="uid://bw7rqfgfbjy2d" path="res://utility/theme/barhealth.tres" id="3_iffvl"]
+[ext_resource type="Script" path="res://Player/Health.gd" id="3_vk1j8"]
+[ext_resource type="Theme" uid="uid://dbmlaya4joyi" path="res://utility/theme/barstamina.tres" id="5_3t0jo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mbgr"]
 radius = 8.0
@@ -2889,33 +2892,16 @@ _data = {
 "RESET": SubResource("Animation_vjrgn")
 }
 
-[sub_resource type="GDScript" id="GDScript_3g7ce"]
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+[sub_resource type="GDScript" id="GDScript_phppx"]
+script/source = "extends ProgressBar
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = \"Health: \" + str(get_node(\"../..\").Health)
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_cf5im"]
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	text = \"Stamina: \" + str(int(get_node(\"../..\").Stamina))
+	value = get_node(\"../../..\").Stamina
+	max_value = master.maxplayerStamina
+	print(get_node(\"../../..\").Stamina)
+	print(master.maxplayerStamina)
 	pass
 "
 
@@ -3094,18 +3080,50 @@ limit_bottom = 1280
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Health" type="Label" parent="UI"]
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 45.0
-offset_bottom = 26.0
-text = "Health"
-script = SubResource("GDScript_3g7ce")
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 58.0
+offset_top = -4.0
+offset_right = 98.0
+offset_bottom = 36.0
 
-[node name="Stamina" type="Label" parent="UI"]
-offset_left = 6.0
-offset_top = 23.0
-offset_right = 46.0
-offset_bottom = 46.0
-text = "Stamina"
-script = SubResource("GDScript_cf5im")
+[node name="Health" type="ProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.442
+anchor_top = 0.089
+anchor_right = -1.442
+anchor_bottom = 0.095
+offset_left = 14.68
+offset_top = 21.44
+offset_right = 273.68
+offset_bottom = 67.2
+theme = ExtResource("3_iffvl")
+step = 0.0
+page = 2.0
+value = 50.0
+rounded = true
+allow_greater = true
+show_percentage = false
+script = ExtResource("3_vk1j8")
+
+[node name="Stamina" type="ProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.442
+anchor_top = 0.089
+anchor_right = -1.442
+anchor_bottom = 0.095
+offset_left = 14.68
+offset_top = 85.44
+offset_right = 239.68
+offset_bottom = 125.2
+theme = ExtResource("5_3t0jo")
+step = 0.0
+page = 2.0
+value = 50.0
+rounded = true
+allow_greater = true
+show_percentage = false
+script = SubResource("GDScript_phppx")
