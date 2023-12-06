@@ -3060,4 +3060,4 @@ libraries = {
 zoom = Vector2(1.8, 1.8)
 limit_left = 0
 limit_top = -1024
-limit_bottom = 1024
+limit_bottom = 1280
