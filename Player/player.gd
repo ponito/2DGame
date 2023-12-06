@@ -52,14 +52,14 @@ func _physics_process(delta):
 	if is_on_wall_only():
 		if Stamina > -20:
 			if Input.is_action_pressed("Left"):
-				Stamina = Stamina -1
+				Stamina = Stamina -1.2
 				isWallSliding = 0.2
 				isLeftWallSliding = true
 				isRightWallSliding = false
 				if velocity.y >= 0:
 					anim.play("Hang")
 			elif Input.is_action_pressed("Right"):
-				Stamina = Stamina -1
+				Stamina = Stamina -1.2
 				isWallSliding = 0.2
 				isLeftWallSliding = false
 				isRightWallSliding = true
@@ -74,15 +74,21 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
-		anim.play("Jump")
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			anim.play("Jump")
 		elif isLeftWallSliding:
-			velocity.x = SPEED * 3 / 4
-			velocity.y = JUMP_VELOCITY * 4 / 5
+			if Stamina > 70:
+				anim.play("Jump")
+				Stamina = Stamina -70
+				velocity.x = SPEED * 3 / 4
+				velocity.y = JUMP_VELOCITY * 4 / 5
 		elif isRightWallSliding:
-			velocity.x = -SPEED * 3 / 4
-			velocity.y = JUMP_VELOCITY * 4 / 5
+			anim.play("Jump")
+			if Stamina > 70:
+				Stamina = Stamina -70
+				velocity.x = -SPEED * 3 / 4
+				velocity.y = JUMP_VELOCITY * 4 / 5
 		
 
 	# Get the input direction and handle the movement/deceleration.
