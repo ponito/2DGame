@@ -5,6 +5,8 @@ const SPEED = 220.0
 const JUMP_VELOCITY = -400.0
 var Health = master.playerHealth
 var Knowledge = master.playerKnowledge
+var Stamina = 0
+var maxStamina = 200
 var isWallSliding = 0
 var isLeftWallSliding = false
 var isRightWallSliding = false
@@ -19,6 +21,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+
+	#Stamina
+	if not Stamina >= maxStamina:
+		Stamina = Stamina + 1
+
 	#Health
 	if Health <= 0:
 		queue_free()
@@ -43,19 +50,28 @@ func _physics_process(delta):
 		
 		
 	if is_on_wall_only():
-		if Input.is_action_pressed("Left"):
-			isWallSliding = 0.2
-			isLeftWallSliding = true
-			isRightWallSliding = false
-			if velocity.y >= 0:
-				anim.play("Hang")
-		elif Input.is_action_pressed("Right"):
-			isWallSliding = 0.2
+		if Stamina > -20:
+			if Input.is_action_pressed("Left"):
+				Stamina = Stamina -1
+				isWallSliding = 0.2
+				isLeftWallSliding = true
+				isRightWallSliding = false
+				if velocity.y >= 0:
+					anim.play("Hang")
+			elif Input.is_action_pressed("Right"):
+				Stamina = Stamina -1
+				isWallSliding = 0.2
+				isLeftWallSliding = false
+				isRightWallSliding = true
+				if velocity.y >= 0:
+					anim.play("Hang")
+		else:
+			isWallSliding = 0
+	if (isWallSliding == 0):
 			isLeftWallSliding = false
-			isRightWallSliding = true
-			if velocity.y >= 0:
-				anim.play("Hang")
-	
+			isRightWallSliding = false
+
+
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
 		anim.play("Jump")

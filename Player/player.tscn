@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=14 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
 [ext_resource type="Texture2D" uid="uid://bcavhv4vnj3wq" path="res://images/player/player1.png" id="2_5vrwi"]
@@ -2889,6 +2889,36 @@ _data = {
 "RESET": SubResource("Animation_vjrgn")
 }
 
+[sub_resource type="GDScript" id="GDScript_3g7ce"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Health: \" + str(get_node(\"../..\").Health)
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_cf5im"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Stamina: \" + str(get_node(\"../..\").Stamina)
+	pass
+"
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 slide_on_ceiling = false
 script = ExtResource("1_yu86q")
@@ -3061,3 +3091,21 @@ zoom = Vector2(1.8, 1.8)
 limit_left = 0
 limit_top = -1024
 limit_bottom = 1280
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Health" type="Label" parent="UI"]
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 26.0
+text = "Health"
+script = SubResource("GDScript_3g7ce")
+
+[node name="Stamina" type="Label" parent="UI"]
+offset_left = 6.0
+offset_top = 23.0
+offset_right = 46.0
+offset_bottom = 46.0
+text = "Stamina"
+script = SubResource("GDScript_cf5im")
