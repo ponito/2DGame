@@ -12,12 +12,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready() -> void:
 	$HealthBar.value = Health
+	
+func _process(delta):
+	$HealthBar.value = Health
+	
+	if Health <= 0:
+		self.queue_free()
+	
 
 func _physics_process(delta):
 	#Gravity for the Enemy
-	velocity.y += gravity * delta
-	
-	$HealthBar.value = Health
+	velocity.y += gravity * delta	
 	
 	#Internal Timer
 	if JumpTimer > 0:
