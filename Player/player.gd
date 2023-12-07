@@ -91,7 +91,8 @@ func _physics_process(delta):
 				velocity.x = -SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		
-
+	
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("Left", "Right")
@@ -113,11 +114,11 @@ func _physics_process(delta):
 		get_node("Sprite").position.x= -3.5
 		if velocity.y == 0:
 			anim.play("Move")
-		
 	elif is_on_floor():
 		velocity.x = lerp(velocity.x, 0., 0.2)
 		if velocity.y == 0:
 			anim.play("Idle")
+		
 	if velocity.y > 0 and isWallSliding <= 0:
 		anim.play("Fall")
 	move_and_slide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvhrxe17cg8ex"
-path="res://.godot/imported/Dagger.png-6c077bee60860742a7cef8c8ad97f0bd.ctex"
+uid="uid://bqphx7qv3j7qi"
+path="res://.godot/imported/WeaponEffect.png-db50f5c8222b91b4340991f696ca9819.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/player/Dagger.png"
-dest_files=["res://.godot/imported/Dagger.png-6c077bee60860742a7cef8c8ad97f0bd.ctex"]
+source_file="res://images/WeaponEffect.png"
+dest_files=["res://.godot/imported/WeaponEffect.png-db50f5c8222b91b4340991f696ca9819.ctex"]
 
 [params]
 
