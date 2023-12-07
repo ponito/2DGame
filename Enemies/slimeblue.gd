@@ -70,5 +70,5 @@ func _on_hitbox_body_entered(body):
 				body.velocity.x += direction.x * 1000
 			else:
 				body.velocity.x += direction.x * 1000
-			body.Health -= 1
+			body.Health -= 40
 		
