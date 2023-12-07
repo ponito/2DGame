@@ -3081,6 +3081,9 @@ limit_top = -1024
 limit_bottom = 1280
 
 [node name="UI" type="CanvasLayer" parent="."]
+editor_description = "Is here because moves when screen size changes!
+Is change able if you solve the problem.
+"
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
