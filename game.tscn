@@ -14,7 +14,7 @@
 [node name="player" parent="player" instance=ExtResource("2_q18dc")]
 top_level = true
 visibility_layer = 16
-position = Vector2(2600, 976)
+position = Vector2(629, 140)
 
 [node name="enemies" type="Node2D" parent="."]
 
