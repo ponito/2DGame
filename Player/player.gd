@@ -30,7 +30,6 @@ func _physics_process(delta):
 	if HurtTimer > 0:
 		velocity.x = lerp(velocity.x, 0., 0.2)
 		HurtTimer= HurtTimer -1
-		print(HurtTimer)
 	#Invincibility
 	if Invincibility > 0:
 		Invincibility= Invincibility -1
