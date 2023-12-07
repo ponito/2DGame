@@ -7,7 +7,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("E"):
+	if Input.is_action_just_pressed("E"):
 		if close == true:
 			get_node("../player/player").Stamina = master.maxplayerStamina #Instant Stamina Restore
 			master.playerHealth = get_node("../player/player").Health #Saving of Health

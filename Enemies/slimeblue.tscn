@@ -29,8 +29,8 @@ radius = 298.0
 height = 26.0
 
 [node name="slimeblue" type="CharacterBody2D"]
-collision_layer = 6
-collision_mask = 3
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_gqoko")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
