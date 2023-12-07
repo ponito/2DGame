@@ -7,6 +7,11 @@ var Health = master.playerHealth
 var Knowledge = master.playerKnowledge
 var Stamina = 200
 var maxStamina = 200
+
+var HurtTimer = 0
+var Invincibility = 0
+
+
 var isWallSliding = 0
 var isLeftWallSliding = false
 var isRightWallSliding = false
@@ -21,6 +26,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+	#HurtTimer
+	if HurtTimer > 0:
+		velocity.x = lerp(velocity.x, 0., 0.2)
+		HurtTimer= HurtTimer -1
+		print(HurtTimer)
+	#Invincibility
+	if Invincibility > 0:
+		Invincibility= Invincibility -1
+
 
 	#Stamina
 	if not Stamina >= maxStamina:
@@ -114,8 +128,14 @@ func _physics_process(delta):
 		get_node("Sprite").position.x= -3.5
 		if velocity.y == 0:
 			anim.play("Move")
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 	elif is_on_floor():
-		velocity.x = lerp(velocity.x, 0., 0.2)
+		if not HurtTimer > 0:
+			velocity.x = lerp(velocity.x, 0., 0.2)
 		if velocity.y == 0:
 			anim.play("Idle")
 		
