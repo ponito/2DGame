@@ -95,17 +95,23 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("Left", "Right")
 	if Input.is_action_pressed("Right"):
-		velocity.x = min(velocity.x + SPEED * delta * 4, SPEED)
+		if is_on_floor():
+			velocity.x = min(velocity.x + SPEED * delta * 4, SPEED)
+		else:
+				velocity.x = min(velocity.x + SPEED * delta * 3, SPEED)
 		get_node("Sprite").scale.x= 1
 		get_node("Sprite").position.x= 0
 		if velocity.y == 0:
 			anim.play("Move")
 	elif Input.is_action_pressed("Left"):
-			velocity.x = max(velocity.x - SPEED * delta * 4, -SPEED)
-			get_node("Sprite").scale.x= -1
-			get_node("Sprite").position.x= -3.5
-			if velocity.y == 0:
-				anim.play("Move")
+		if is_on_floor():
+				velocity.x = max(velocity.x - SPEED * delta * 4, -SPEED)
+		else:
+				velocity.x = max(velocity.x - SPEED * delta * 3, -SPEED)
+		get_node("Sprite").scale.x= -1
+		get_node("Sprite").position.x= -3.5
+		if velocity.y == 0:
+			anim.play("Move")
 		
 	elif is_on_floor():
 		velocity.x = lerp(velocity.x, 0., 0.2)
