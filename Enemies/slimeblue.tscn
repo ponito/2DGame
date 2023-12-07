@@ -55,14 +55,6 @@ position = Vector2(0, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_o48k2")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -23.0
-offset_top = -23.0
-offset_right = 23.0
-offset_bottom = -16.0
-step = 1.0
-show_percentage = false
-
 [connection signal="body_entered" from="EnemyVision" to="." method="_on_enemy_vision_body_entered"]
 [connection signal="body_exited" from="EnemyVision" to="." method="_on_enemy_vision_body_exited"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

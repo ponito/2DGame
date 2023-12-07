@@ -57,9 +57,13 @@ func _on_enemy_vision_body_exited(body):
 #Damage Zone
 func _on_hitbox_body_entered(body):
 	if body.name == "player":
-		var direction = (player.position - self.position).normalized()
-		if direction.x > 0:
-			body.velocity.x += +800
-		else:
-			body.velocity.x += -800
-		body.Health -= 1
+		if not body.Invincibility > 0:
+			body.HurtTimer = 5
+			body.Invincibility = 20
+			var direction = (player.position - self.position).normalized()
+			if direction.x > 0:
+				body.velocity.x += direction.x * 1000
+			else:
+				body.velocity.x += direction.x * 1000
+			body.Health -= 1
+		
