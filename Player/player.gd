@@ -10,7 +10,7 @@ var maxStamina = 200
 
 var HurtTimer = 0
 var Invincibility = 0
-
+var ocupied = 0
 
 var isWallSliding = 0
 var isLeftWallSliding = false
