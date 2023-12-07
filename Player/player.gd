@@ -52,18 +52,18 @@ func _physics_process(delta):
 	if is_on_wall_only():
 		if Stamina > -20:
 			if Input.is_action_pressed("Left"):
-				Stamina = Stamina -1.2
 				isWallSliding = 0.2
 				isLeftWallSliding = true
 				isRightWallSliding = false
 				if velocity.y >= 0:
+					Stamina = Stamina -1.2
 					anim.play("Hang")
 			elif Input.is_action_pressed("Right"):
-				Stamina = Stamina -1.2
 				isWallSliding = 0.2
 				isLeftWallSliding = false
 				isRightWallSliding = true
 				if velocity.y >= 0:
+					Stamina = Stamina -1.2
 					anim.play("Hang")
 		else:
 			isWallSliding = 0

@@ -5,6 +5,4 @@ extends ProgressBar
 func _process(delta):
 	value = get_node("../../..").Health
 	max_value = master.maxplayerHealth
-	print(get_node("../../..").Health)
-	print(master.maxplayerHealth)
 	pass
