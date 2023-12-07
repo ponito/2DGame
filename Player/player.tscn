@@ -2921,6 +2921,11 @@ polygon = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748
 uv = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748, 50.3497, 35.8042, 44.4755, 35.5245, 44.0559, 24.1958)
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0.37, 0.37, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0.74, 0, 0, 0.37), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0.37, 0.37, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
+[node name="Weapon" parent="Sprite/armleft" instance=ExtResource("3_wcrwa")]
+position = Vector2(-8.09994, -7.1328)
+rotation = 1.48377
+scale = Vector2(1, 1)
+
 [node name="Torso" type="Polygon2D" parent="Sprite"]
 visibility_layer = 16
 offset = Vector2(-16, -36)
@@ -2968,10 +2973,6 @@ skeleton = NodePath("../Skeleton2D")
 polygon = PackedVector2Array(40.2734, 14.7213, 37.0137, 14.4059, 35.4364, 19.5584, 35.0158, 27.0242, 35.9621, 31.9663, 38.8013, 35.7518, 43.7434, 35.4364, 43.8486, 31.6509, 41.6404, 28.8118, 41.6404, 21.4511, 41.7455, 16.1935)
 uv = PackedVector2Array(40.2734, 14.7213, 37.0137, 14.4059, 35.4364, 19.5584, 35.0158, 27.0242, 35.9621, 31.9663, 38.8013, 35.7518, 43.7434, 35.4364, 43.8486, 31.6509, 41.6404, 28.8118, 41.6404, 21.4511, 41.7455, 16.1935)
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1", PackedFloat32Array(0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 1), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0.5, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0.5, 1, 1, 0.5, 0.5, 0.5, 0)]
-
-[node name="Weapon" parent="Sprite/armright" instance=ExtResource("3_wcrwa")]
-position = Vector2(7.43009, 7.59273)
-rotation = -1.56826
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Sprite"]
 visible = false
