@@ -5,6 +5,8 @@ var SPEED = 200
 var JumpTimer = 40
 var JumpTimerBase = 100
 var JumpVelocity= -300
+var Health = 100
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
