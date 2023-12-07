@@ -10,11 +10,14 @@ var Health = 100
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
+func _ready() -> void:
+	$HealthBar.value = Health
 
 func _physics_process(delta):
 	#Gravity for the Enemy
 	velocity.y += gravity * delta
+	
+	$HealthBar.value = Health
 	
 	#Internal Timer
 	if JumpTimer > 0:
