@@ -128,11 +128,8 @@ func _physics_process(delta):
 		get_node("Sprite").position.x= -3.5
 		if velocity.y == 0:
 			anim.play("Move")
-<<<<<<< Updated upstream
-=======
 
 
->>>>>>> Stashed changes
 	elif is_on_floor():
 		if not HurtTimer > 0:
 			velocity.x = lerp(velocity.x, 0., 0.2)
