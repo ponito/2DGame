@@ -54,4 +54,9 @@ func _on_enemy_vision_body_exited(body):
 #Damage Zone
 func _on_hitbox_body_entered(body):
 	if body.name == "player":
-		body.Health -= 40
+		var direction = (player.position - self.position).normalized()
+		if direction.x > 0:
+			body.velocity.x += +800
+		else:
+			body.velocity.x += -800
+		body.Health -= 1
