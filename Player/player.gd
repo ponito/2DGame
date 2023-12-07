@@ -42,6 +42,7 @@ func _physics_process(delta):
 			
 	# Add the gravity.
 	if not is_on_floor():
+		Stamina = Stamina -0.6
 		if isWallSliding > 0 and velocity.y > 0:
 			velocity.y = min(velocity.y + gravity * delta / 2, SPEED / 4)
 		else:
@@ -56,14 +57,14 @@ func _physics_process(delta):
 				isLeftWallSliding = true
 				isRightWallSliding = false
 				if velocity.y >= 0:
-					Stamina = Stamina -1.2
+					Stamina = Stamina -0.6
 					anim.play("Hang")
 			elif Input.is_action_pressed("Right"):
 				isWallSliding = 0.2
 				isLeftWallSliding = false
 				isRightWallSliding = true
 				if velocity.y >= 0:
-					Stamina = Stamina -1.2
+					Stamina = Stamina -0.6
 					anim.play("Hang")
 		else:
 			isWallSliding = 0
@@ -81,14 +82,14 @@ func _physics_process(delta):
 			if Stamina > 70:
 				anim.play("Jump")
 				Stamina = Stamina -70
-				velocity.x = SPEED * 3 / 4
-				velocity.y = JUMP_VELOCITY * 4 / 5
+				velocity.x = SPEED * 7 / 10
+				velocity.y = JUMP_VELOCITY * 8 / 10
 		elif isRightWallSliding:
 			anim.play("Jump")
 			if Stamina > 70:
 				Stamina = Stamina -70
-				velocity.x = -SPEED * 3 / 4
-				velocity.y = JUMP_VELOCITY * 4 / 5
+				velocity.x = -SPEED * 7 / 10
+				velocity.y = JUMP_VELOCITY * 8 / 10
 		
 
 	# Get the input direction and handle the movement/deceleration.
@@ -98,7 +99,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.x = min(velocity.x + SPEED * delta * 4, SPEED)
 		else:
-				velocity.x = min(velocity.x + SPEED * delta * 3, SPEED)
+				velocity.x = min(velocity.x + SPEED * delta * 2.7, SPEED)
 		get_node("Sprite").scale.x= 1
 		get_node("Sprite").position.x= 0
 		if velocity.y == 0:
@@ -107,7 +108,7 @@ func _physics_process(delta):
 		if is_on_floor():
 				velocity.x = max(velocity.x - SPEED * delta * 4, -SPEED)
 		else:
-				velocity.x = max(velocity.x - SPEED * delta * 3, -SPEED)
+				velocity.x = max(velocity.x - SPEED * delta * 2.7, -SPEED)
 		get_node("Sprite").scale.x= -1
 		get_node("Sprite").position.x= -3.5
 		if velocity.y == 0:
