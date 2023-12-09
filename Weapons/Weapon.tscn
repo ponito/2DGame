@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxs33utcftevu"]
+[gd_scene load_steps=4 format=3 uid="uid://dxs33utcftevu"]
 
 [ext_resource type="Script" path="res://Weapons/Weapon.gd" id="1_lbdt2"]
 [ext_resource type="Texture2D" uid="uid://clxj1mdr7dpvd" path="res://images/Dagger.png" id="2_gi3wx"]
+[ext_resource type="Script" path="res://Weapons/timer.gd" id="3_bdlwg"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_lbdt2")
@@ -9,3 +10,6 @@ script = ExtResource("1_lbdt2")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(11, 0)
 texture = ExtResource("2_gi3wx")
+
+[node name="timer" type="Node2D" parent="."]
+script = ExtResource("3_bdlwg")
