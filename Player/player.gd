@@ -131,10 +131,10 @@ func _physics_process(delta):
 			anim.play("Move")
 
 
-	elif is_on_floor() && Ocupied <= 0:
+	elif is_on_floor():
 		if not HurtTimer > 0:
 			velocity.x = lerp(velocity.x, 0., 0.2)
-		if velocity.y == 0:
+		if velocity.y == 0 && Ocupied <= 0:
 			anim.play("Idle")
 		
 	if velocity.y > 0 and isWallSliding <= 0 && Ocupied <= 0:
