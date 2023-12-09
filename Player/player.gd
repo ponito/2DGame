@@ -5,7 +5,13 @@ const SPEED = 220.0
 const JUMP_VELOCITY = -400.0
 var Health = master.playerHealth
 var Knowledge = master.playerKnowledge
-var Stamina = 10
+var Stamina = 10:
+	get:
+		return Stamina
+	set(value):
+		if (value < Stamina):
+			staminaRegTimer = 0.5
+		Stamina = value
 var maxStamina = 10
 var staminaRegTimer = 0
 
@@ -22,12 +28,6 @@ var isRightWallSliding = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #When needed create variable for Animation Player for Animation cutting
 @onready var anim = get_node("AnimationPlayer")
-
-
-
-func useStamina(amount):
-	Stamina -= amount
-	staminaRegTimer = 0.5
 
 
 func _physics_process(delta):
@@ -78,14 +78,14 @@ func _physics_process(delta):
 				isLeftWallSliding = true
 				isRightWallSliding = false
 				if velocity.y >= 0:
-					useStamina(delta * 1)
+					Stamina -= delta * 1
 					anim.play("Hang")
 			elif Input.is_action_pressed("Right"):
 				isWallSliding = 0.05
 				isLeftWallSliding = false
 				isRightWallSliding = true
 				if velocity.y >= 0:
-					useStamina(delta * 1)
+					Stamina -= delta * 1
 					anim.play("Hang")
 		else:
 			isWallSliding = 0
@@ -99,18 +99,18 @@ func _physics_process(delta):
 		if is_on_floor() && Ocupied <= 0:
 			if Stamina >= 2:
 				anim.play("Jump")
-				useStamina(2)
+				Stamina -= 2
 				velocity.y = JUMP_VELOCITY
 		elif isLeftWallSliding:
 			if Stamina >= 2:
 				anim.play("Jump")
-				useStamina(2)
+				Stamina -= 2
 				velocity.x = SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		elif isRightWallSliding:
 			if Stamina >= 2:
 				anim.play("Jump")
-				useStamina(2)
+				Stamina -= 2
 				velocity.x = -SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		
