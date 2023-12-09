@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 
 master="*res://Global/master.gd"
 save="*res://Global/save.gd"
-Ocupied="*res://Global/Ocupied.gd"
 
 [input]
 
