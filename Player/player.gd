@@ -10,7 +10,7 @@ var maxStamina = 200
 
 var HurtTimer = 0
 var Invincibility = 0
-var ocupied = 0
+var Ocupied = 0
 
 var isWallSliding = 0
 var isLeftWallSliding = false
@@ -33,6 +33,9 @@ func _physics_process(delta):
 	#Invincibility
 	if Invincibility > 0:
 		Invincibility= Invincibility -1
+	#Ocupied
+	if Ocupied > 0:
+		Ocupied= Ocupied -1
 
 
 	#Stamina
