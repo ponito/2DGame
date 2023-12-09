@@ -61,6 +61,7 @@ func _physics_process(delta):
 			velocity.y = min(velocity.y + gravity * delta / 2, SPEED / 4)
 		else:
 			velocity.y += gravity * delta
+			pass
 			
 		
 		
