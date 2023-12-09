@@ -3478,8 +3478,8 @@ uv = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748, 50.
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0.37, 0.37, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0.74, 0, 0, 0.37), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0.37, 0.37, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
 [node name="Weapon" parent="Sprite/armleft" instance=ExtResource("3_wcrwa")]
-position = Vector2(22.634, 15.7533)
-rotation = -0.75116
+position = Vector2(-5.04977, 10.9704)
+rotation = 1.2931
 scale = Vector2(1, 1)
 
 [node name="Torso" type="Polygon2D" parent="Sprite"]
@@ -3701,5 +3701,3 @@ rounded = true
 allow_greater = true
 show_percentage = false
 script = SubResource("GDScript_phppx")
-
-[connection signal="animation_finished" from="AnimationPlayer" to="Sprite/armleft/Weapon" method="_on_animation_player_animation_finished"]
