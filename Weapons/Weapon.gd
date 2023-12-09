@@ -2,6 +2,7 @@ extends Node2D
 
 var weaponEffect = preload("res://Weapons/WeaponEffect.tscn")
 var activeWeaponEffect = null
+var anim_name = null
 @onready var player = get_node("../../..")
 @onready var anim = get_node("../../../AnimationPlayer")
 
