@@ -9,6 +9,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("E"):
 		if close == true:
+			master.X = get_node("../player/player").position.x
+			master.Y = get_node("../player/player").position.y
 			get_node("../player/player").Stamina = master.maxplayerStamina #Instant Stamina Restore
 			master.playerHealth = get_node("../player/player").Health #Saving of Health
 			get_node("../player/player").Health = master.maxplayerHealth #Instant Restoration

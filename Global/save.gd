@@ -12,7 +12,9 @@ func saveGame():
 		"playerHealth": master.playerHealth,
 		"maxplayerHealth": master.maxplayerHealth,
 		"playerKnowledge": master.playerKnowledge,
-		"maxplayerStamina": master.maxplayerStamina
+		"maxplayerStamina": master.maxplayerStamina,
+		"X": master.X,
+		"Y": master.Y
 		
 	}
 	var jstr = JSON.stringify(data)
@@ -29,6 +31,8 @@ func loadGame():
 				master.maxplayerHealth = curren_line["maxplayerHealth"]
 				master.playerKnowledge = curren_line["playerKnowledge"]
 				master.maxplayerStamina = curren_line["maxplayerStamina"]
+				master.X = curren_line["X"]
+				master.Y = curren_line["Y"]
 
 
 

@@ -8,8 +8,10 @@ var Health = master.playerHealth:
 		return Health
 	set(value):
 		if (0 >= value):
-			queue_free()
-			get_tree().change_scene_to_file("res://menu.tscn")
+			collision_layer = 0
+			get_node("Sprite").scale.x= 1
+			anim.play("Death")
+			Ocupied = 1
 		Health = value
 
 var Knowledge = master.playerKnowledge
@@ -37,6 +39,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #When needed create variable for Animation Player for Animation cutting
 @onready var anim = get_node("AnimationPlayer")
 
+
+func _ready():
+	position.x = master.X
+	position.y = master.Y
 
 func _physics_process(delta):
 	#HurtTimer

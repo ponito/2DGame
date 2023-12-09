@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=24 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
 [ext_resource type="Texture2D" uid="uid://bcavhv4vnj3wq" path="res://images/player/player1.png" id="2_5vrwi"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Player/Health.gd" id="3_vk1j8"]
 [ext_resource type="PackedScene" uid="uid://dxs33utcftevu" path="res://Weapons/Weapon.tscn" id="3_wcrwa"]
 [ext_resource type="Theme" uid="uid://dbmlaya4joyi" path="res://utility/theme/barstamina.tres" id="5_3t0jo"]
-[ext_resource type="Script" path="res://Player/gameover.gd" id="7_o8t2w"]
+[ext_resource type="Script" path="res://Player/death.gd" id="7_1jlry"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_kt8to"]
 target_nodepath = NodePath("../WeaponTarget")
@@ -566,6 +566,106 @@ tracks/44/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_04xwx"]
+resource_name = "Death"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Control/death:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Control/death:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(271, -172), Vector2(271, -172), Vector2(260, 260)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Skeleton2D/hip/spine/armleft1/armleft2/armleft3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/Skeleton2D/hip/spine/armleft1:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.68016]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/Skeleton2D/hip/spine/armright1:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.06262]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite/Skeleton2D/hip/legright1:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.210895]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(-1, -22)]
 }
 
 [sub_resource type="Animation" id="Animation_7wncr"]
@@ -3438,10 +3538,59 @@ tracks/44/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("UI/Control/death:visible")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("UI/Control/death:position")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(271, -172)]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("Sprite:rotation")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("CollisionShape2D:position")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.16387e-10, -2)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7chyy"]
 _data = {
 "Attack": SubResource("Animation_u1fco"),
+"Death": SubResource("Animation_04xwx"),
 "Fall": SubResource("Animation_7wncr"),
 "Hang": SubResource("Animation_xo6hl"),
 "Idle": SubResource("Animation_rx1o1"),
@@ -3462,6 +3611,15 @@ func _process(delta):
 	pass
 "
 
+[sub_resource type="FontVariation" id="FontVariation_ulolu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qtise"]
+font = SubResource("FontVariation_ulolu")
+font_size = 100
+font_color = Color(0.607843, 0.184314, 0.211765, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 slide_on_ceiling = false
 script = ExtResource("1_yu86q")
@@ -3480,8 +3638,8 @@ uv = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748, 50.
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0.37, 0.37, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0.74, 0, 0, 0.37), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0.37, 0.37, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
 [node name="Weapon" parent="Sprite/armleft" instance=ExtResource("3_wcrwa")]
-position = Vector2(22.634, 15.7533)
-rotation = -0.75116
+position = Vector2(-6.18685, 4.03766)
+rotation = 1.72313
 scale = Vector2(1, 1)
 
 [node name="Torso" type="Polygon2D" parent="Sprite"]
@@ -3501,7 +3659,7 @@ texture = ExtResource("2_5vrwi")
 skeleton = NodePath("../Skeleton2D")
 polygon = PackedVector2Array(24.3956, 4.11758, 25.2747, 8.73296, 24.8352, 16.8648, 22.6374, 20.1615, 14.0659, 20.1615, 9.23077, 18.8428, 8.35165, 11.1505, 8.13187, 5.21648, 13.8462, 2.7989, 20.8791, 2.57912)
 uv = PackedVector2Array(24.3956, 4.11758, 25.2747, 8.73296, 24.8352, 16.8648, 22.6374, 20.1615, 14.0659, 20.1615, 9.23077, 18.8428, 8.35165, 11.1505, 8.13187, 5.21648, 13.8462, 2.7989, 20.8791, 2.57912)
-bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5)]
+bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5), "hip/spine/armleft1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2/armleft3/handleft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legright1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legright1/legright2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legright1/legright2/legright3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legleft1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legleft1/legleft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/legleft1/legleft2/legleft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="legright" type="Polygon2D" parent="Sprite"]
 visibility_layer = 16
@@ -3533,6 +3691,7 @@ uv = PackedVector2Array(40.2734, 14.7213, 37.0137, 14.4059, 35.4364, 19.5584, 35
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/spine/armright1", PackedFloat32Array(0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 1), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0.5, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0.5, 1, 1, 0.5, 0.5, 0.5, 0)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Sprite"]
+visible = false
 rotation = -0.0424907
 modification_stack = SubResource("SkeletonModificationStack2D_sc4n0")
 
@@ -3634,7 +3793,7 @@ length = 16.0
 bone_angle = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -2)
+position = Vector2(1.16387e-10, -2)
 rotation = 0.000663864
 shape = SubResource("CapsuleShape2D_6mbgr")
 
@@ -3701,14 +3860,16 @@ allow_greater = true
 show_percentage = false
 script = SubResource("GDScript_phppx")
 
-[node name="gameover" type="Node2D" parent="UI"]
-script = ExtResource("7_o8t2w")
-
-[node name="Label" type="Label" parent="UI/gameover"]
-offset_left = 190.0
-offset_top = -133.0
-offset_right = 401.0
-offset_bottom = -30.0
+[node name="death" type="Label" parent="UI/Control"]
+visible = false
+layout_mode = 0
+offset_left = 271.0
+offset_top = -172.0
+offset_right = 816.0
+offset_bottom = -35.0
 text = "Game Over"
+label_settings = SubResource("LabelSettings_qtise")
+script = ExtResource("7_1jlry")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="Sprite/armleft/Weapon" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="UI/Control/death" method="_on_animation_player_animation_finished"]

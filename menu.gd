@@ -8,6 +8,7 @@ func _on_play_pressed():
 	save.loadGame()
 	get_tree().change_scene_to_file("res://game.tscn")
 	
+	
 
 
 

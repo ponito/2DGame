@@ -15,8 +15,6 @@ func _process(delta):
 		self.add_child(activeWeaponEffect)
 		anim.play("Attack")
 		
-	#if Input.is_action_just_released("left_click"):
-		#$activeWeaponEffect.queue_free()
 
 
 

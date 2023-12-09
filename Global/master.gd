@@ -9,8 +9,8 @@ var timer = 0
 
 
 
-
-
+var X = 629
+var Y = 140
 
 
 
