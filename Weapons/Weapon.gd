@@ -7,7 +7,9 @@ var anim_name = null
 @onready var anim = get_node("../../../AnimationPlayer")
 
 func _process(delta):
-	if Input.is_action_just_pressed("left_click") && player.Ocupied == 0:
+	if Input.is_action_just_pressed("left_click") && player.Ocupied == 0 && player.Stamina > 4:
+		#player.Stamina = player.Stamina -4
+		player.useStamina(2)
 		get_node("../../..").Ocupied = 1
 		activeWeaponEffect = weaponEffect.instantiate()
 		activeWeaponEffect.name = "activeWeaponEffect"
