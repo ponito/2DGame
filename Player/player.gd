@@ -10,7 +10,9 @@ var maxStamina = 200
 
 var HurtTimer = 0
 var Invincibility = 0
+
 var Ocupied = 0
+
 
 var isWallSliding = 0
 var isLeftWallSliding = false
@@ -35,8 +37,11 @@ func _physics_process(delta):
 		Invincibility= Invincibility -1
 	#Ocupied
 	if Ocupied > 0:
-		Ocupied= Ocupied -1
+		if Ocupied == "weapon":
+			
+			pass
 
+		
 
 	#Stamina
 	if not Stamina >= maxStamina:
@@ -67,7 +72,7 @@ func _physics_process(delta):
 		
 		
 	if is_on_wall_only():
-		if Stamina > -20:
+		if Stamina > -20 && Ocupied <= 0:
 			if Input.is_action_pressed("Left"):
 				isWallSliding = 0.05
 				isLeftWallSliding = true
@@ -91,7 +96,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
-		if is_on_floor():
+		if is_on_floor() && Ocupied <= 0:
 			velocity.y = JUMP_VELOCITY
 			anim.play("Jump")
 		elif isLeftWallSliding:
@@ -112,7 +117,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("Left", "Right")
-	if Input.is_action_pressed("Right"):
+	if Input.is_action_pressed("Right")  && Ocupied <= 0:
 		if is_on_floor():
 			velocity.x = min(velocity.x + SPEED * delta * 4, SPEED)
 		else:
@@ -132,7 +137,7 @@ func _physics_process(delta):
 			anim.play("Move")
 
 
-	elif is_on_floor():
+	elif is_on_floor() && Ocupied <= 0:
 		if not HurtTimer > 0:
 			velocity.x = lerp(velocity.x, 0., 0.2)
 		if velocity.y == 0:
