@@ -4,8 +4,8 @@ var EnemyHyperArmor = 0
 
 func _on_area_2d_body_entered(body):
 	var direction = (body.position - player.position).normalized()
-	body.velocity.x = sign(direction.x) * 150
-	body.velocity.y = sign(direction.y) * 100
+	body.velocity.x = sign(direction.x) * 200
+	body.velocity.y = sign(direction.y) * 50 +10
 	if "HyperArmor" in body:
 		EnemyHyperArmor = EnemyHyperArmor + body.HyperArmor
 	else:

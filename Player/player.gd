@@ -3,7 +3,15 @@ extends CharacterBody2D
 
 const SPEED = 220.0
 const JUMP_VELOCITY = -400.0
-var Health = master.playerHealth
+var Health = master.playerHealth:
+	get:
+		return Health
+	set(value):
+		if (0 >= value):
+			queue_free()
+			get_tree().change_scene_to_file("res://menu.tscn")
+		Health = value
+
 var Knowledge = master.playerKnowledge
 var Stamina = 10:
 	get:
@@ -47,10 +55,7 @@ func _physics_process(delta):
 	if Stamina < maxStamina and staminaRegTimer == 0:
 		Stamina = min(maxStamina, Stamina + 5*delta)
 
-	#Health
-	if Health <= 0:
-		queue_free()
-		get_tree().change_scene_to_file("res://menu.tscn")
+
 	
 	# Check for wall sliding
 	isWallSliding = max(isWallSliding - delta, 0)
