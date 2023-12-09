@@ -36,7 +36,7 @@ func _physics_process(delta):
 	if Invincibility > 0:
 		Invincibility= Invincibility -1
 	#Ocupied
-	if Ocupied > 0:
+	#if Ocupied > 0:
 		if Ocupied == "weapon":
 			
 			pass

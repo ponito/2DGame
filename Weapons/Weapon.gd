@@ -10,8 +10,8 @@ func _process(delta):
 		activeWeaponEffect.name = "activeWeaponEffect"
 		self.add_child(activeWeaponEffect)
 		anim.play("Attack")
-		get_node("../../..").Ocupied = "Weapon"
-		get_node("../../..").OcupiedSeconds = 0.2
+		#get_node("../../..").Ocupied = "Weapon"
+		get_node("timer").timer = 10
 		
 	if Input.is_action_just_released("left_click"):
 		$activeWeaponEffect.queue_free()
