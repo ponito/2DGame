@@ -31,10 +31,10 @@ func _physics_process(delta):
 	#HurtTimer
 	if HurtTimer > 0:
 		velocity.x = lerp(velocity.x, 0., 0.2)
-		HurtTimer= HurtTimer -1
+		HurtTimer = max(0. HurtTimer - delta)
 	#Invincibility
 	if Invincibility > 0:
-		Invincibility= Invincibility -1
+		Invincibility = max(0, Invincibility - delta)
 	#Ocupied
 	if Ocupied > 0:
 		if Ocupied == "weapon":
@@ -44,8 +44,8 @@ func _physics_process(delta):
 		
 
 	#Stamina
-	if not Stamina >= maxStamina:
-		Stamina = Stamina + 1
+	if Stamina < maxStamina:
+		Stamina = min(maxStamina, Stamina + delta)
 
 	#Health
 	if Health <= 0:

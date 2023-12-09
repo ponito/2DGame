@@ -24,29 +24,30 @@ func _physics_process(delta):
 	#Gravity for the Enemy
 	velocity.y += gravity * delta	
 	
+	if is_on_floor():
+		velocity.x = lerp(velocity.x, 0., 0.2)
+	
 	#Internal Timer
 	if JumpTimer > 0:
 		JumpTimer = JumpTimer -1
 	else:
 		if chase == true:
-			velocity.y = JumpVelocity
+			player = get_node("../../player/player")
+			var direction = (player.position - self.position).normalized()
+			jump(direction)
 		JumpTimer = JumpTimerBase
 	
-	#Enemy Movement when Player Visible
-	if chase == true:
-		player = get_node("../../player/player")
-		var direction = (player.position - self.position).normalized()
-		if not is_on_floor():
-			pass
-			velocity.x = direction.x * SPEED
-			if velocity.x > 0:
-				get_node("AnimatedSprite2D").flip_h = false
-			else:
-				get_node("AnimatedSprite2D").flip_h = true
-		else:
-			velocity.x = 0
 	move_and_slide()
 
+
+func jump(direction):
+	print(direction)
+	velocity.y = JumpVelocity
+	velocity.x = RandomNumberGenerator.new().randf_range(0.6, 1.4) * sign(direction.x) * SPEED
+	if velocity.x > 0:
+		get_node("AnimatedSprite2D").flip_h = false
+	else:
+		get_node("AnimatedSprite2D").flip_h = true
 
 
 #When Player/Smth enters Vision
@@ -62,13 +63,12 @@ func _on_enemy_vision_body_exited(body):
 #Damage Zone
 func _on_hitbox_body_entered(body):
 	if body.name == "player":
-		if not body.Invincibility > 0:
-			body.HurtTimer = 5
-			body.Invincibility = 20
+		print(body.Invincibility)
+		if body.Invincibility == 0:
+			body.HurtTimer = 0.2
+			body.Invincibility = 0.5
 			var direction = (player.position - self.position).normalized()
-			if direction.x > 0:
-				body.velocity.x += direction.x * 1000
-			else:
-				body.velocity.x += direction.x * 1000
-			body.Health -= 40
+			body.velocity.x += sign(direction.x) * 500
+			velocity.x -= sign(direction.x) * 200
+			body.Health -= 4
 		
