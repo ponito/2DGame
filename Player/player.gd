@@ -7,6 +7,7 @@ var Health = master.playerHealth
 var Knowledge = master.playerKnowledge
 var Stamina = 10
 var maxStamina = 10
+var staminaRegTimer = 0
 
 var HurtTimer = 0
 var Invincibility = 0
@@ -24,7 +25,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 
-
+func useStamina(amount):
+	Stamina -= amount
+	staminaRegTimer = 1
 
 
 func _physics_process(delta):
@@ -35,9 +38,13 @@ func _physics_process(delta):
 	#Invincibility
 	if Invincibility > 0:
 		Invincibility = max(0, Invincibility - delta)
+		
 	
 	#Stamina
-	if Stamina < maxStamina:
+	if staminaRegTimer > 0:
+		staminaRegTimer = max(0, staminaRegTimer - delta)
+	
+	if Stamina < maxStamina and staminaRegTimer == 0:
 		Stamina = min(maxStamina, Stamina + 5*delta)
 
 	#Health
@@ -71,14 +78,14 @@ func _physics_process(delta):
 				isLeftWallSliding = true
 				isRightWallSliding = false
 				if velocity.y >= 0:
-					Stamina -= delta * 1
+					useStamina(delta * 1)
 					anim.play("Hang")
 			elif Input.is_action_pressed("Right"):
 				isWallSliding = 0.05
 				isLeftWallSliding = false
 				isRightWallSliding = true
 				if velocity.y >= 0:
-					Stamina -= delta * 1
+					useStamina(delta * 1)
 					anim.play("Hang")
 		else:
 			isWallSliding = 0
@@ -90,19 +97,20 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor() && Ocupied <= 0:
-			anim.play("Jump")
-			Stamina -= 2
-			velocity.y = JUMP_VELOCITY
+			if Stamina >= 2:
+				anim.play("Jump")
+				useStamina(2)
+				velocity.y = JUMP_VELOCITY
 		elif isLeftWallSliding:
 			if Stamina >= 2:
 				anim.play("Jump")
-				Stamina -= 2
+				useStamina(2)
 				velocity.x = SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		elif isRightWallSliding:
 			if Stamina >= 2:
 				anim.play("Jump")
-				Stamina -= 2
+				useStamina(2)
 				velocity.x = -SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		
