@@ -27,7 +27,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func useStamina(amount):
 	Stamina -= amount
-	staminaRegTimer = 1
+	staminaRegTimer = 0.5
 
 
 func _physics_process(delta):
