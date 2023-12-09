@@ -3461,6 +3461,7 @@ func _process(delta):
 "
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+visible = false
 slide_on_ceiling = false
 script = ExtResource("1_yu86q")
 

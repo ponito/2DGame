@@ -19,7 +19,7 @@ func _process(delta):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	get_node("../../..").Ocupied = 0
+	player.Ocupied = 0
 	$activeWeaponEffect.queue_free()
 	#if activeWeaponEffect != null:
 		

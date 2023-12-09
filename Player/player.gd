@@ -119,7 +119,7 @@ func _physics_process(delta):
 		get_node("Sprite").position.x= 0
 		if velocity.y == 0:
 			anim.play("Move")
-	elif Input.is_action_pressed("Left"):
+	elif Input.is_action_pressed("Left") && Ocupied <= 0:
 		if is_on_floor():
 				velocity.x = max(velocity.x - SPEED * delta * 4, -SPEED)
 		else:
