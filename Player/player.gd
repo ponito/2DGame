@@ -31,7 +31,7 @@ func _physics_process(delta):
 	#HurtTimer
 	if HurtTimer > 0:
 		velocity.x = lerp(velocity.x, 0., 0.2)
-		HurtTimer = max(0. HurtTimer - delta)
+		HurtTimer = max(0, HurtTimer - delta)
 	#Invincibility
 	if Invincibility > 0:
 		Invincibility = max(0, Invincibility - delta)
