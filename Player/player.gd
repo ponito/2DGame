@@ -35,13 +35,6 @@ func _physics_process(delta):
 	#Invincibility
 	if Invincibility > 0:
 		Invincibility = max(0, Invincibility - delta)
-	#Ocupied
-	if Ocupied > 0:
-		if Ocupied == "weapon":
-			
-			pass
-
-		
 
 	#Stamina
 	if Stamina < maxStamina:
