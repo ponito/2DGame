@@ -6,7 +6,6 @@ var activeWeaponEffect = null
 @onready var anim = get_node("../../../AnimationPlayer")
 
 func _process(delta):
-	print(player.Ocupied)
 	if Input.is_action_just_pressed("left_click") && player.Ocupied == 0:
 		get_node("../../..").Ocupied = 1
 		activeWeaponEffect = weaponEffect.instantiate()
@@ -22,7 +21,6 @@ func _process(delta):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	print("Hi")
 	player.Ocupied = 0
 	$activeWeaponEffect.queue_free()
 	pass

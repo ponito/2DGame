@@ -5,8 +5,8 @@ const SPEED = 220.0
 const JUMP_VELOCITY = -400.0
 var Health = master.playerHealth
 var Knowledge = master.playerKnowledge
-var Stamina = 200
-var maxStamina = 200
+var Stamina = 10
+var maxStamina = 10
 
 var HurtTimer = 0
 var Invincibility = 0
@@ -35,10 +35,10 @@ func _physics_process(delta):
 	#Invincibility
 	if Invincibility > 0:
 		Invincibility = max(0, Invincibility - delta)
-
+	
 	#Stamina
 	if Stamina < maxStamina:
-		Stamina = min(maxStamina, Stamina + 50*delta)
+		Stamina = min(maxStamina, Stamina + 5*delta)
 
 	#Health
 	if Health <= 0:
@@ -56,7 +56,6 @@ func _physics_process(delta):
 			
 	# Add the gravity.
 	if not is_on_floor():
-		Stamina = Stamina -0.6
 		if isWallSliding > 0 and velocity.y > 0:
 			velocity.y = min(velocity.y + gravity * delta / 2, SPEED / 4)
 		else:
@@ -66,20 +65,20 @@ func _physics_process(delta):
 		
 		
 	if is_on_wall_only():
-		if Stamina > -20 && Ocupied <= 0:
+		if Stamina >= 0 && Ocupied <= 0:
 			if Input.is_action_pressed("Left"):
 				isWallSliding = 0.05
 				isLeftWallSliding = true
 				isRightWallSliding = false
 				if velocity.y >= 0:
-					Stamina = Stamina -0.6
+					Stamina -= delta * 1
 					anim.play("Hang")
 			elif Input.is_action_pressed("Right"):
 				isWallSliding = 0.05
 				isLeftWallSliding = false
 				isRightWallSliding = true
 				if velocity.y >= 0:
-					Stamina = Stamina -0.6
+					Stamina -= delta * 1
 					anim.play("Hang")
 		else:
 			isWallSliding = 0
@@ -91,18 +90,19 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor() && Ocupied <= 0:
-			velocity.y = JUMP_VELOCITY
 			anim.play("Jump")
+			Stamina -= 2
+			velocity.y = JUMP_VELOCITY
 		elif isLeftWallSliding:
-			if Stamina > 70:
+			if Stamina >= 2:
 				anim.play("Jump")
-				Stamina = Stamina -60
+				Stamina -= 2
 				velocity.x = SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		elif isRightWallSliding:
-			anim.play("Jump")
-			if Stamina > 70:
-				Stamina = Stamina -60
+			if Stamina >= 2:
+				anim.play("Jump")
+				Stamina -= 2
 				velocity.x = -SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		

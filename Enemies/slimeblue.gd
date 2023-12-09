@@ -41,7 +41,6 @@ func _physics_process(delta):
 
 
 func jump(direction):
-	print(direction)
 	velocity.y = JumpVelocity
 	velocity.x = RandomNumberGenerator.new().randf_range(0.6, 1.4) * sign(direction.x) * SPEED
 	if velocity.x > 0:
@@ -63,7 +62,6 @@ func _on_enemy_vision_body_exited(body):
 #Damage Zone
 func _on_hitbox_body_entered(body):
 	if body.name == "player":
-		print(body.Invincibility)
 		if body.Invincibility == 0:
 			body.HurtTimer = 0.2
 			body.Invincibility = 0.5
