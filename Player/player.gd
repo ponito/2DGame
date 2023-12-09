@@ -38,7 +38,7 @@ func _physics_process(delta):
 
 	#Stamina
 	if Stamina < maxStamina:
-		Stamina = min(maxStamina, Stamina + delta)
+		Stamina = min(maxStamina, Stamina + 50*delta)
 
 	#Health
 	if Health <= 0:
