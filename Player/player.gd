@@ -10,6 +10,7 @@ var Health = master.playerHealth:
 		if (0 >= value):
 			collision_layer = 0
 			get_node("Sprite").scale.x= 1
+			velocity.x = 0
 			anim.play("Death")
 			Ocupied = 1
 		Health = value
@@ -151,7 +152,7 @@ func _physics_process(delta):
 
 
 	elif is_on_floor():
-		if not HurtTimer > 0:
+		if not HurtTimer > 0 && Ocupied == 0:
 			velocity.x = lerp(velocity.x, 0., 0.2)
 		if velocity.y == 0 && Ocupied <= 0:
 			anim.play("Idle")

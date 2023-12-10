@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready() -> void:
 	$HealthBar.value = Health
 	
-func _process(delta):
+func _process(_delta):
 	$HealthBar.value = Health
 	
 	if Health <= 0:
