@@ -7,7 +7,7 @@ var anim_name = null
 @onready var anim = get_node("../../../AnimationPlayer")
 
 func _process(delta):
-	if Input.is_action_just_pressed("left_click") && player.Ocupied == 0 && player.Stamina > 4:
+	if Input.is_action_just_pressed("left_click") && player.Ocupied == 0 && player.Stamina > 0:
 		player.velocity.x *= 0.1
 		player.Stamina -= 2
 		get_node("../../..").Ocupied = 1

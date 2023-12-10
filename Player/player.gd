@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 220.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 360.0
+const JUMP_VELOCITY = -500.0
 var Health = master.playerHealth:
 	get:
 		return Health
@@ -22,6 +22,9 @@ var Stamina = 10:
 	set(value):
 		if (value < Stamina):
 			staminaRegTimer = 0.5
+		if (value < 0):
+			staminaRegTimer = 3.5
+			value = 0
 		Stamina = value
 var maxStamina = 10
 var staminaRegTimer = 0
@@ -30,7 +33,7 @@ var HurtTimer = 0
 var Invincibility = 0
 
 var Ocupied = 0
-
+var isfalling = 0
 
 var isWallSliding = 0
 var isLeftWallSliding = false
@@ -59,9 +62,16 @@ func _physics_process(delta):
 	if staminaRegTimer > 0:
 		staminaRegTimer = max(0, staminaRegTimer - delta)
 	
-	if Stamina < maxStamina and staminaRegTimer == 0:
+	if Stamina < maxStamina and staminaRegTimer <= 0:
 		Stamina = min(maxStamina, Stamina + 5*delta)
+		
 
+	#fallspeed calculation for falldamage
+	if is_on_floor() && isfalling > 900:
+		Health -= isfalling*0.05
+		if is_on_floor() && isfalling > 1500:
+			Health -= isfalling*0.1
+	isfalling = velocity.y
 
 	
 	# Check for wall sliding
@@ -84,7 +94,7 @@ func _physics_process(delta):
 		
 		
 	if is_on_wall_only():
-		if Stamina >= 0 && Ocupied <= 0:
+		if Stamina > 0 && Ocupied <= 0:
 			if Input.is_action_pressed("Left"):
 				isWallSliding = 0.05
 				isLeftWallSliding = true
@@ -109,18 +119,18 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor() && Ocupied <= 0:
-			if Stamina >= 2:
+			if Stamina > 0:
 				anim.play("Jump")
 				Stamina -= 2
 				velocity.y = JUMP_VELOCITY
 		elif isLeftWallSliding:
-			if Stamina >= 2:
+			if Stamina > 0:
 				anim.play("Jump")
 				Stamina -= 2
 				velocity.x = SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		elif isRightWallSliding:
-			if Stamina >= 2:
+			if Stamina > 0:
 				anim.play("Jump")
 				Stamina -= 2
 				velocity.x = -SPEED * 7 / 10
@@ -156,6 +166,9 @@ func _physics_process(delta):
 			velocity.x = lerp(velocity.x, 0., 0.2)
 		if velocity.y == 0 && Ocupied <= 0:
 			anim.play("Idle")
+		if velocity.y > 0:
+			print(velocity.y)
+			pass
 		
 	if velocity.y > 0 and isWallSliding <= 0 && Ocupied <= 0:
 		anim.play("Fall")

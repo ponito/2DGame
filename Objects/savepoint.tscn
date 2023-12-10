@@ -18,6 +18,7 @@ animations = [{
 size = Vector2(32, 36)
 
 [node name="savepoint" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_f3xy3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -33,6 +34,7 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_rjqxc")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -5.0
 offset_top = -65.0
 offset_right = 5.0

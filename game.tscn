@@ -14,42 +14,33 @@
 [node name="player" parent="player" instance=ExtResource("2_q18dc")]
 top_level = true
 visibility_layer = 16
-position = Vector2(629, 140)
+position = Vector2(784, -48)
 
 [node name="enemies" type="Node2D" parent="."]
-
-[node name="slimeblue3" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(1815, 134)
-
-[node name="slimeblue4" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(2384, 417)
-
-[node name="slimeblue5" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(2240, 131)
-
-[node name="slimeblue6" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(3077, -47)
-
-[node name="slimeblue7" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(3289, 264)
-
-[node name="slimeblue9" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(2879, -469)
-
-[node name="slimeblue8" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(2341, -307)
-
-[node name="slimeblue10" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(2239, -315)
 
 [node name="slimeblue" parent="enemies" instance=ExtResource("3_31g8n")]
 position = Vector2(877, 377)
 
-[node name="slimeblue1" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(1474, 152)
+[node name="slimeblue2" parent="enemies" instance=ExtResource("3_31g8n")]
+position = Vector2(1840, -56)
+
+[node name="slimeblue3" parent="enemies" instance=ExtResource("3_31g8n")]
+position = Vector2(2784, -48)
+
+[node name="slimeblue6" parent="enemies" instance=ExtResource("3_31g8n")]
+position = Vector2(3432, -792)
+
+[node name="slimeblue5" parent="enemies" instance=ExtResource("3_31g8n")]
+position = Vector2(3720, -144)
+
+[node name="slimeblue4" parent="enemies" instance=ExtResource("3_31g8n")]
+position = Vector2(1560, 424)
+
+[node name="slimeblue7" parent="enemies" instance=ExtResource("3_31g8n")]
+position = Vector2(3600, 432)
 
 [node name="savepoint" parent="." instance=ExtResource("4_vldtn")]
-position = Vector2(550, 158)
+position = Vector2(696, 24)
 
 [node name="savepoint2" parent="." instance=ExtResource("4_vldtn")]
-position = Vector2(2254, -706)
+position = Vector2(4192, -1736)
