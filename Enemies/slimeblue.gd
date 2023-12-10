@@ -6,7 +6,7 @@ var JumpTimer = 40
 var JumpTimerBase = 100
 var JumpVelocity= -300
 var Health = 100
-
+var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -65,7 +65,7 @@ func _on_hitbox_body_entered(body):
 		if body.Invincibility == 0:
 			body.HurtTimer = 0.2
 			body.Invincibility = 0.5
-			var direction = (player.position - self.position).normalized()
+			direction = (player.position - self.position).normalized()
 			body.velocity.x = sign(direction.x) * 500
 			velocity.x -= sign(direction.x) * 200
 			body.Health -= 40
