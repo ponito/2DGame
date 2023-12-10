@@ -71,6 +71,8 @@ func _physics_process(delta):
 		Health -= isfalling*0.05
 		if is_on_floor() && isfalling > 1500:
 			Health -= isfalling*0.1
+	if isWallSliding == 1 && isfalling > 900:
+		Health -= isfalling*0.05
 	isfalling = velocity.y
 
 	

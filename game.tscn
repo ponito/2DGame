@@ -44,3 +44,9 @@ position = Vector2(696, 24)
 
 [node name="savepoint2" parent="." instance=ExtResource("4_vldtn")]
 position = Vector2(4192, -1736)
+
+[node name="savepoint3" parent="." instance=ExtResource("4_vldtn")]
+position = Vector2(13232, 472)
+
+[node name="savepoint4" parent="." instance=ExtResource("4_vldtn")]
+position = Vector2(10264, -2280)
