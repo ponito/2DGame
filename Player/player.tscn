@@ -658,7 +658,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CollisionShape2D:position")
+tracks/7/path = NodePath("body:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -3577,7 +3577,7 @@ tracks/47/keys = {
 tracks/48/type = "value"
 tracks/48/imported = false
 tracks/48/enabled = true
-tracks/48/path = NodePath("CollisionShape2D:position")
+tracks/48/path = NodePath("body:position")
 tracks/48/interp = 1
 tracks/48/loop_wrap = true
 tracks/48/keys = {
@@ -3639,8 +3639,8 @@ uv = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748, 50.
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0.37, 0.37, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0.74, 0, 0, 0.37), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0.37, 0.37, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
 [node name="Weapon" parent="Sprite/armleft" instance=ExtResource("3_wcrwa")]
-position = Vector2(-6.18685, 4.03763)
-rotation = 1.72313
+position = Vector2(-5.04977, 10.9704)
+rotation = 1.2931
 
 [node name="Torso" type="Polygon2D" parent="Sprite"]
 visibility_layer = 16
@@ -3792,7 +3792,7 @@ auto_calculate_length_and_angle = false
 length = 16.0
 bone_angle = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="body" type="CollisionShape2D" parent="."]
 position = Vector2(1.16387e-10, -2)
 rotation = 0.000663864
 shape = SubResource("CapsuleShape2D_6mbgr")

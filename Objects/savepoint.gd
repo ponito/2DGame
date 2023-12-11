@@ -1,30 +1,33 @@
 extends Node2D
 var Test
 var close = false
+@onready var player = get_node("../../player/player")
 func _ready():
-	$Label.show()
+	$Label.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("E"):
 		if close == true:
-			master.X = get_node("../player/player").position.x
-			master.Y = get_node("../player/player").position.y
-			get_node("../player/player").Stamina = master.maxplayerStamina #Instant Stamina Restore
-			master.playerHealth = get_node("../player/player").Health #Saving of Health
-			get_node("../player/player").Health = master.maxplayerHealth #Instant Restoration
+			master.X = player.position.x
+			master.Y = player.position.y
+			player.Stamina = master.maxplayerStamina #Instant Stamina Restore
+			master.playerHealth = player.Health #Saving of Health
+			player.Health = master.maxplayerHealth #Instant Restoration
 			master.playerHealth = master.maxplayerHealth #Only for Hp Restoration, overwrites Upper Save
-			master.playerKnowledge = get_node("../player/player").Knowledge #Saving of Knowledge 
+			master.playerKnowledge = player.Knowledge #Saving of Knowledge 
+			$Label.hide()
 			save.saveGame()
-			print("Saved")
 
 
 func _on_area_2d_body_entered(body):
-	$Label.show()
-	close = true
+	if body == player:
+		$Label.show()
+		close = true
 	
 
 
 func _on_area_2d_body_exited(body):
-	$Label.hide()
-	close = false
+	if body == player:
+		$Label.hide()
+		close = false

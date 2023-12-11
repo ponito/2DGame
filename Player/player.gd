@@ -139,6 +139,10 @@ func _physics_process(delta):
 				velocity.y = JUMP_VELOCITY * 8 / 10
 		
 	
+
+	
+	
+	
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

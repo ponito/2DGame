@@ -1,13 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dne3470jshe2n"]
+[gd_scene load_steps=6 format=3 uid="uid://dne3470jshe2n"]
 
 [ext_resource type="PackedScene" uid="uid://bf0qqi1cmv0s4" path="res://TileMap.tscn" id="1_1sdfj"]
 [ext_resource type="PackedScene" uid="uid://bqfrw14wap3v2" path="res://Player/player.tscn" id="2_q18dc"]
 [ext_resource type="PackedScene" uid="uid://bmaqnjstdio8f" path="res://Enemies/slimeblue.tscn" id="3_31g8n"]
 [ext_resource type="PackedScene" uid="uid://bp4ipb8ajqkg4" path="res://Objects/savepoint.tscn" id="4_vldtn"]
+[ext_resource type="PackedScene" uid="uid://bvjwaxk141qr" path="res://Objects/fallthroughtile.tscn" id="5_gcger"]
 
 [node name="game" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_1sdfj")]
+
+[node name="plattforms" type="Node2D" parent="TileMap"]
+
+[node name="savepoint" parent="TileMap" instance=ExtResource("4_vldtn")]
+position = Vector2(685, 26)
+
+[node name="savepoint2" parent="TileMap" instance=ExtResource("4_vldtn")]
+position = Vector2(4419, -1926)
+
+[node name="savepoint3" parent="TileMap" instance=ExtResource("4_vldtn")]
+position = Vector2(13231, 472)
 
 [node name="player" type="Node2D" parent="."]
 
@@ -39,14 +51,6 @@ position = Vector2(1560, 424)
 [node name="slimeblue7" parent="enemies" instance=ExtResource("3_31g8n")]
 position = Vector2(3600, 432)
 
-[node name="savepoint" parent="." instance=ExtResource("4_vldtn")]
-position = Vector2(696, 24)
-
-[node name="savepoint2" parent="." instance=ExtResource("4_vldtn")]
-position = Vector2(4192, -1736)
-
-[node name="savepoint3" parent="." instance=ExtResource("4_vldtn")]
-position = Vector2(13232, 472)
-
-[node name="savepoint4" parent="." instance=ExtResource("4_vldtn")]
-position = Vector2(10264, -2280)
+[node name="Fallthroughtile" parent="." instance=ExtResource("5_gcger")]
+position = Vector2(6640, 208)
+scale = Vector2(1.5, 1.2)
