@@ -8,6 +8,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("E"):
+		print(player)
 		if close == true:
 			master.X = player.position.x
 			master.Y = player.position.y

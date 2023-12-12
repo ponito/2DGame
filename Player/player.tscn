@@ -5318,8 +5318,8 @@ uv = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748, 50.
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0.37, 0.37, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0.74, 0, 0, 0.37), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0.37, 0.37, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
 [node name="Weapon" parent="Sprite/armleft" instance=ExtResource("3_wcrwa")]
-position = Vector2(-2.26323, -6.70222)
-rotation = 2.44968
+position = Vector2(-5.04977, 10.9704)
+rotation = 1.2931
 scale = Vector2(1, 1)
 
 [node name="Torso" type="Polygon2D" parent="Sprite"]
@@ -5445,7 +5445,6 @@ bone_angle = 0.0
 [node name="handleft" type="Bone2D" parent="Sprite/Skeleton2D/hip/spine/armleft1/armleft2/armleft3"]
 position = Vector2(1.42142, 0.170563)
 rotation = -1.39831
-scale = Vector2(1, 1)
 rest = Transform2D(0.171635, -0.985161, 0.985161, 0.171635, 1.42142, 0.170563)
 auto_calculate_length_and_angle = false
 length = 16.0

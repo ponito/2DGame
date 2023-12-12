@@ -5,19 +5,18 @@ var anim_name = null
 @onready var holdpos = get_node("StaticBody2D")
 @onready var anim = get_node("../../../player/player/AnimationPlayer")
 func  _process(_delta):
-	print(player.shoulder._overlapping)
 	if collisionx == true:
 		# Handle Fallthrough Platforms fallthrough.
 		if Input.is_action_just_pressed("S"):
 			player.position.y += 1
 
 
-		if Input.is_action_pressed("W") and player.Stamina >= 0:
+		if Input.is_action_pressed("W") and player.Stamina >= 1:
 			if player.shoulder._overlapping.has(holdpos):
 				player.velocity.x = 0
-				player.velocity.y = -100
+				player.velocity.y = 0
 				anim.play("fallthroughclutch")
-				player.position.y -= 60
+				player.position.y = -60 + position.y
 				player.Stamina -= 2.2
 				player.Ocupied = 1
 				
