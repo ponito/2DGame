@@ -38,17 +38,21 @@ var isfalling = 0
 var isWallSliding = 0
 var isLeftWallSliding = false
 var isRightWallSliding = false
+var isClutchHang = 0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #When needed create variable for Animation Player for Animation cutting
 @onready var anim = get_node("AnimationPlayer")
-
+@onready var head = get_node("Sprite/head/Area2D")
+@onready var shoulder = get_node("Sprite/Torso/Area2D")
+@onready var ThisTileMap = get_node("../../TileMap/TileMap")
 
 func _ready():
 	position.x = master.X
 	position.y = master.Y
 
 func _physics_process(delta):
+
 	#HurtTimer
 	if HurtTimer > 0:
 		velocity.x = lerp(velocity.x, 0., 0.2)
@@ -80,40 +84,56 @@ func _physics_process(delta):
 	isWallSliding = max(isWallSliding - delta, 0)
 	if not is_on_wall():
 		isWallSliding = 0
-	if (isWallSliding == 0):
+		isClutchHang = 0
+	if (isWallSliding == 0 && isClutchHang == 0):
 			isLeftWallSliding = false
 			isRightWallSliding = false
 			
 			
 	# Add the gravity.
 	if not is_on_floor():
-		if isWallSliding > 0 and velocity.y > 0:
+		if isWallSliding > 0 and velocity.y >= 0:
 			velocity.y = min(velocity.y + gravity * delta / 2, SPEED / 4)
+		elif (isClutchHang == 1):
+			velocity.y = 0
+			isClutchHang = 0
 		else:
 			velocity.y += gravity * delta
 			
 			
-		
 
 	if is_on_wall_only():
 		if Stamina > 0 && Ocupied <= 0:
-			if Input.is_action_pressed("Left"):
-				isWallSliding = 0.05
-				isLeftWallSliding = true
-				isRightWallSliding = false
-				if velocity.y >= 0:
+			if head._overlapping.has(ThisTileMap):
+				if Input.is_action_pressed("Left"):
+					isWallSliding = 0.05
+					isLeftWallSliding = true
+					isRightWallSliding = false
+					if velocity.y >= 0:
+						Stamina -= delta * 1
+						anim.play("Hang")
+				elif Input.is_action_pressed("Right"):
+					isWallSliding = 0.05
+					isLeftWallSliding = false
+					isRightWallSliding = true
+					if velocity.y >= 0:
+						Stamina -= delta * 1
+						anim.play("Hang")
+			elif shoulder._overlapping.has(ThisTileMap):
+				if Input.is_action_pressed("Left"):
+					isClutchHang = 1
 					Stamina -= delta * 1
-					anim.play("Hang")
-			elif Input.is_action_pressed("Right"):
-				isWallSliding = 0.05
-				isLeftWallSliding = false
-				isRightWallSliding = true
-				if velocity.y >= 0:
+					anim.play("Clutch")
+					isLeftWallSliding = true
+				elif Input.is_action_pressed("Right"):
+					isClutchHang = 1
 					Stamina -= delta * 1
-					anim.play("Hang")
+					anim.play("Clutch")
+					isRightWallSliding = true
 		else:
 			isWallSliding = 0
-	if (isWallSliding == 0):
+			isClutchHang = 0
+	if (isWallSliding == 0 && isClutchHang == 0):
 			isLeftWallSliding = false
 			isRightWallSliding = false
 
@@ -154,7 +174,7 @@ func _physics_process(delta):
 				velocity.x = min(velocity.x + SPEED * delta * 2.7, SPEED)
 		get_node("Sprite").scale.x= 1
 		get_node("Sprite").position.x= 0
-		if velocity.y == 0:
+		if velocity.y == 0 && isClutchHang == 0:
 			anim.play("Move")
 	elif Input.is_action_pressed("Left") && Ocupied <= 0:
 		if is_on_floor():
@@ -163,8 +183,9 @@ func _physics_process(delta):
 				velocity.x = max(velocity.x - SPEED * delta * 2.7, -SPEED)
 		get_node("Sprite").scale.x= -1
 		get_node("Sprite").position.x= -3.5
-		if velocity.y == 0:
+		if velocity.y == 0 && isClutchHang == 0:
 			anim.play("Move")
+
 
 
 	elif is_on_floor():
@@ -172,9 +193,6 @@ func _physics_process(delta):
 			velocity.x = lerp(velocity.x, 0., 0.2)
 		if velocity.y == 0 && Ocupied <= 0:
 			anim.play("Idle")
-		if velocity.y > 0:
-			print(velocity.y)
-			pass
 		
 	if velocity.y > 0 and isWallSliding <= 0 && Ocupied <= 0:
 		anim.play("Fall")

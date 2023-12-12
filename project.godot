@@ -51,8 +51,10 @@ S={
 
 [layer_names]
 
-2d_physics/layer_1="Collision"
-2d_physics/layer_2="Damage"
+2d_physics/layer_1="SolideUmgebung"
+2d_physics/layer_2="Lebewesen"
+2d_physics/layer_3="Schaden"
+2d_physics/layer_4="Immaterielles"
 
 [rendering]
 
