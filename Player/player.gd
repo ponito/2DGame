@@ -130,9 +130,9 @@ func _physics_process(delta):
 					Stamina -= delta * 1
 					anim.play("Clutch")
 					isRightWallSliding = true
-		else:
-			isWallSliding = 0
-			isClutchHang = 0
+	else:
+		isWallSliding = 0
+		isClutchHang = 0
 	if (isWallSliding == 0 && isClutchHang == 0):
 			isLeftWallSliding = false
 			isRightWallSliding = false
@@ -173,7 +173,7 @@ func _physics_process(delta):
 		else:
 				velocity.x = min(velocity.x + SPEED * delta * 2.7, SPEED)
 		get_node("Sprite").scale.x= 1
-		get_node("Sprite").position.x= 0
+		get_node("Sprite").position.x= 1.5
 		if velocity.y == 0 && isClutchHang == 0:
 			anim.play("Move")
 	elif Input.is_action_pressed("Left") && Ocupied <= 0:
@@ -182,25 +182,27 @@ func _physics_process(delta):
 		else:
 				velocity.x = max(velocity.x - SPEED * delta * 2.7, -SPEED)
 		get_node("Sprite").scale.x= -1
-		get_node("Sprite").position.x= -3.5
+		get_node("Sprite").position.x= -2.5
 		if velocity.y == 0 && isClutchHang == 0:
 			anim.play("Move")
 
 
 
+		
 	elif is_on_floor():
 		if not HurtTimer > 0 && Ocupied == 0:
 			velocity.x = lerp(velocity.x, 0., 0.2)
 		if velocity.y == 0 && Ocupied <= 0:
+			
+			
 			anim.play("Idle")
 		
 	if velocity.y > 0 and isWallSliding <= 0 && Ocupied <= 0:
 		anim.play("Fall")
+		
 	move_and_slide()
 	
-
-
-
+	
 
 
 
