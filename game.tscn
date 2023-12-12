@@ -12,6 +12,22 @@
 
 [node name="plattforms" type="Node2D" parent="TileMap"]
 
+[node name="Fallthroughtile" parent="TileMap/plattforms" instance=ExtResource("5_gcger")]
+position = Vector2(6656, 208)
+scale = Vector2(1.5, 1.2)
+
+[node name="Fallthroughtile3" parent="TileMap/plattforms" instance=ExtResource("5_gcger")]
+position = Vector2(280, -16)
+scale = Vector2(1.5, 1.2)
+
+[node name="Fallthroughtile2" parent="TileMap/plattforms" instance=ExtResource("5_gcger")]
+position = Vector2(7680, 120)
+scale = Vector2(2, 1.2)
+
+[node name="Fallthroughtile4" parent="TileMap/plattforms" instance=ExtResource("5_gcger")]
+position = Vector2(7352, 120)
+scale = Vector2(1.7, 1.2)
+
 [node name="savepoint" parent="TileMap" instance=ExtResource("4_vldtn")]
 position = Vector2(685, 26)
 
@@ -33,9 +49,6 @@ position = Vector2(784, -48)
 [node name="slimeblue" parent="enemies" instance=ExtResource("3_31g8n")]
 position = Vector2(877, 377)
 
-[node name="slimeblue8" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(408, -24)
-
 [node name="slimeblue2" parent="enemies" instance=ExtResource("3_31g8n")]
 position = Vector2(1840, -56)
 
@@ -53,15 +66,3 @@ position = Vector2(1560, 424)
 
 [node name="slimeblue7" parent="enemies" instance=ExtResource("3_31g8n")]
 position = Vector2(3600, 432)
-
-[node name="Fallthroughtile" parent="." instance=ExtResource("5_gcger")]
-position = Vector2(6640, 208)
-scale = Vector2(1.5, 1.2)
-
-[node name="Fallthroughtile2" parent="." instance=ExtResource("5_gcger")]
-position = Vector2(320, 32)
-scale = Vector2(1.5, 1.2)
-
-[node name="Fallthroughtile3" parent="." instance=ExtResource("5_gcger")]
-position = Vector2(32, 32)
-scale = Vector2(1.5, 1.2)
