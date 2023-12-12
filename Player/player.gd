@@ -94,8 +94,7 @@ func _physics_process(delta):
 			
 			
 		
-	if get_node("Sprite/head").is_on_wall():
-		print("Hi")
+
 	if is_on_wall_only():
 		if Stamina > 0 && Ocupied <= 0:
 			if Input.is_action_pressed("Left"):
