@@ -54,3 +54,7 @@ position = Vector2(3600, 432)
 [node name="Fallthroughtile" parent="." instance=ExtResource("5_gcger")]
 position = Vector2(6640, 208)
 scale = Vector2(1.5, 1.2)
+
+[node name="Fallthroughtile2" parent="." instance=ExtResource("5_gcger")]
+position = Vector2(238, 23)
+scale = Vector2(1.5, 1.2)

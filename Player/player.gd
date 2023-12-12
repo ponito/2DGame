@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 360.0
-const JUMP_VELOCITY = -500.0
+const JUMP_VELOCITY = -550.0
 var Health = master.playerHealth:
 	get:
 		return Health

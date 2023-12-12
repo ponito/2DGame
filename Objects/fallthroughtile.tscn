@@ -15,7 +15,6 @@ script = ExtResource("1_4hwf3")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Fallthrough" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
 position = Vector2(96, 0)
 shape = SubResource("RectangleShape2D_e3mks")
 one_way_collision = true
@@ -30,7 +29,6 @@ texture = ExtResource("1_l4fca")
 position = Vector2(-14, 0)
 
 [node name="fallthrough" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(110, -3.5)
 shape = SubResource("RectangleShape2D_4uagm")
 
