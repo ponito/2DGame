@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 360.0
-const JUMP_VELOCITY = -550.0
+const JUMP_VELOCITY = -450.0
 var Health = master.playerHealth:
 	get:
 		return Health
@@ -151,12 +151,18 @@ func _physics_process(delta):
 				Stamina -= 2
 				velocity.x = SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
+				if isClutchHang:
+					velocity.x = SPEED * 4 / 10
+					velocity.y = JUMP_VELOCITY * 8 / 10
 		elif isRightWallSliding:
 			if Stamina > 0:
 				anim.play("Jump")
 				Stamina -= 2
 				velocity.x = -SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
+				if isClutchHang:
+					velocity.x = -SPEED * 4 / 10
+					velocity.y = JUMP_VELOCITY * 8 / 10
 		
 	
 

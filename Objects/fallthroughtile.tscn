@@ -25,13 +25,13 @@ position = Vector2(96.4277, 4.48828)
 scale = Vector2(2.98663, 1.43896)
 texture = ExtResource("1_l4fca")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Fallthroughzone" type="Area2D" parent="."]
 position = Vector2(-14, 0)
 collision_mask = 2
 
-[node name="fallthrough" type="CollisionShape2D" parent="Area2D"]
+[node name="fallthrough" type="CollisionShape2D" parent="Fallthroughzone"]
 position = Vector2(110, -1.5)
 shape = SubResource("RectangleShape2D_4uagm")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Fallthroughzone" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Fallthroughzone" to="." method="_on_area_2d_body_exited"]
