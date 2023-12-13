@@ -143,26 +143,28 @@ func _physics_process(delta):
 		if is_on_floor() && Ocupied <= 0:
 			if Stamina > 0:
 				anim.play("Jump")
-				Stamina -= 3
+				Stamina -= 2
 				velocity.y = JUMP_VELOCITY
 		elif isLeftWallSliding:
 			if Stamina > 0:
 				anim.play("Jump")
-				Stamina -= 3
+				if not isClutchHang:
+					Stamina -= 3
 				velocity.x = SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 				if isClutchHang:
-					Stamina += 1
+					Stamina -= 2
 					velocity.x = SPEED * 4 / 10
 					velocity.y = JUMP_VELOCITY * 8 / 10
 		elif isRightWallSliding:
 			if Stamina > 0:
 				anim.play("Jump")
-				Stamina -= 3
+				if not isClutchHang:
+					Stamina -= 3
 				velocity.x = -SPEED * 7 / 10
 				velocity.y = JUMP_VELOCITY * 8 / 10
 				if isClutchHang:
-					Stamina += 1
+					Stamina -= 2
 					velocity.x = -SPEED * 4 / 10
 					velocity.y = JUMP_VELOCITY * 8 / 10
 		
