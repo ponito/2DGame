@@ -29,6 +29,7 @@ var Stamina = 10:
 var maxStamina = 10
 var staminaRegTimer = 0
 
+
 var HurtTimer = 0
 var Invincibility = 0
 
