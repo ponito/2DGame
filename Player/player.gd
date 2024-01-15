@@ -50,6 +50,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	position.x = master.X
 	position.y = master.Y
+	
 
 func _physics_process(delta):
 
