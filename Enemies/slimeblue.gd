@@ -3,9 +3,21 @@ var player
 var chase = false
 var SPEED = 300
 var JumpTimer = 40
-var JumpTimerBase = 100
+var JumpTimerBase = 10
 var JumpVelocity= -400
-var Health = 100
+var Health = 100:
+	get:
+		return Health
+	set(value):
+		if (0 >= value):
+			self.queue_free()
+		if (Health - value >= 10):
+			HurtTimer = 5
+			pass
+		Health = value
+
+
+var HurtTimer = 0
 var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -16,9 +28,7 @@ func _ready() -> void:
 func _process(_delta):
 	$HealthBar.value = Health
 	
-	if Health <= 0:
-		self.queue_free()
-	
+
 
 func _physics_process(delta):
 	#Gravity for the Enemy
@@ -26,17 +36,23 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		velocity.x = lerp(velocity.x, 0., 0.2)
+		
+	#Stuncountdown after being Damaged
+	if HurtTimer > 0:
+		HurtTimer = max(0, HurtTimer - delta*10)
 	
 	#Internal Timer
-	if JumpTimer > 0:
-		JumpTimer = JumpTimer -1
-	else:
-		if chase == true:
-			player = get_node("../../player/player")
-			var direction = (player.position - self.position).normalized()
-			jump(direction)
-		JumpTimer = JumpTimerBase
-	
+	if  is_on_floor() && HurtTimer <= 0:
+		if JumpTimer > 0:
+			JumpTimer = max(0, JumpTimer - delta*100)
+		else:
+			if chase == true:
+				player = get_node("../../player/player")
+				var direction = (player.position - self.position).normalized()
+				jump(direction)
+			JumpTimer = JumpTimerBase
+			JumpTimer += RandomNumberGenerator.new().randi_range(10, 200)
+
 	move_and_slide()
 
 

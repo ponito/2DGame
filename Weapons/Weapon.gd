@@ -14,12 +14,12 @@ func _ready():
 	anim.animation_finished.connect(_on_animation_player_animation_finished)
 	handconnect.remote_path = "../../../../../../../../armleft/Weapon"
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("left_click") && player.Ocupied == 0 && player.Stamina > 0:
 		if Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"):
-			Knockback = 1.5
+			Knockback = 1.3
 			player.velocity.x = -(player.SPEED -60)
-			player.Stamina -= 2.2
+			player.Stamina -= 2.5
 			get_node("../../..").Ocupied = 1
 			activeWeaponEffect = weaponEffect.instantiate()
 			activeWeaponEffect.name = "activeWeaponEffect"
@@ -27,9 +27,9 @@ func _process(delta):
 			anim.play("Attack_2")
 			
 		if Input.is_action_pressed("Right") and not Input.is_action_pressed("Left"):
-			Knockback = 1.5
+			Knockback = 1.3
 			player.velocity.x = +(player.SPEED -60)
-			player.Stamina -= 2.2
+			player.Stamina -= 2.5
 			get_node("../../..").Ocupied = 1
 			activeWeaponEffect = weaponEffect.instantiate()
 			activeWeaponEffect.name = "activeWeaponEffect"
