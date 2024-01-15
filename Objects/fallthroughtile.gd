@@ -11,7 +11,7 @@ func  _process(_delta):
 			player.position.y += 1
 
 
-		if Input.is_action_pressed("W") and player.Stamina >= 1:
+		if Input.is_action_pressed("W") and player.Stamina >= 1 and player.Ocupied == 0:
 			if player.shoulder._overlapping.has(holdpos):
 				player.velocity.x = 0
 				player.velocity.y = 0

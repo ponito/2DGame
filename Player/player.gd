@@ -177,7 +177,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("Left", "Right")
-	if Input.is_action_pressed("Right")  && Ocupied <= 0:
+	if Input.is_action_pressed("Right")  && Ocupied == 0:
 		if is_on_floor():
 			velocity.x = min(velocity.x + SPEED * delta * 4, SPEED)
 		else:
@@ -186,7 +186,7 @@ func _physics_process(delta):
 		get_node("Sprite").position.x= 1.5
 		if velocity.y == 0 && isClutchHang == 0:
 			anim.play("Move")
-	elif Input.is_action_pressed("Left") && Ocupied <= 0:
+	elif Input.is_action_pressed("Left") && Ocupied == 0:
 		if is_on_floor():
 				velocity.x = max(velocity.x - SPEED * delta * 4, -SPEED)
 		else:
