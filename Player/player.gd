@@ -65,6 +65,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var shoulder = get_node("Sprite/Torso/Area2D")
 @onready var ThisTileMap = get_node("../../TileMap/TileMap")
 
+#Vorläufiges Inventar, soll später ersetzt werden
+var Weapon1 = preload("res://Weapons/Weapon.tscn")
+var Magic2 = preload("res://Player/spells/UmbralMagic.tscn")
+var activeWeapon = null
+
+
+
 func _ready():
 	position.x = master.X
 	position.y = master.Y
@@ -233,7 +240,21 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-
+	
+	
+	
+	
+	#Vorläufiger Waffenwechsel
+	if Input.is_action_just_pressed("1"):
+		get_node("Sprite/armleft").get_child(0).queue_free()
+		activeWeapon = Weapon1.instantiate()
+		get_node("Sprite/armleft").add_child(activeWeapon)
+	
+	if Input.is_action_just_pressed("2"):
+		get_node("Sprite/armleft").get_child(0).queue_free()
+		activeWeapon = Magic2.instantiate()
+		get_node("Sprite/armleft").add_child(activeWeapon)
+	
 
 
 
