@@ -53,9 +53,10 @@ position = Vector2(10256, -2274)
 [node name="player" parent="player" instance=ExtResource("2_q18dc")]
 top_level = true
 visibility_layer = 16
-position = Vector2(802, -25)
+position = Vector2(789, -15)
 
 [node name="enemies" type="Node2D" parent="."]
+position = Vector2(2, 2)
 
 [node name="slimeblue" parent="enemies" instance=ExtResource("3_31g8n")]
 position = Vector2(877, 377)

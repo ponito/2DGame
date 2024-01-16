@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddd3ayj2gsug4"]
+[gd_scene load_steps=3 format=3 uid="uid://ddd3ayj2gsug4"]
 
 [ext_resource type="Theme" uid="uid://chveopgj08abn" path="res://utility/theme/font.tres" id="1_hqn5c"]
+[ext_resource type="Theme" uid="uid://b0h60l35v3ojd" path="res://utility/theme/castbar.tres" id="2_qjhgj"]
 
 [node name="Castmeter" type="Node2D"]
 
 [node name="number" type="RichTextLabel" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -19,3 +21,20 @@ theme = ExtResource("1_hqn5c")
 text = "1"
 fit_content = true
 drag_and_drop_selection_enabled = false
+
+[node name="bar" type="ProgressBar" parent="."]
+offset_left = -18.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = -11.0
+theme = ExtResource("2_qjhgj")
+max_value = 10.0
+step = 0.05
+value = 3.0
+show_percentage = false
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-7, -13, -7, -17)
+width = 0.5
+default_color = Color(0.854902, 0.423529, 0.992157, 1)
+joint_mode = 2

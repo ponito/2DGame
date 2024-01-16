@@ -36,7 +36,7 @@ func _process(delta):
 	
 	if Input.is_action_pressed("left_click") && player.Stamina >= 0 && player.Fokus > 0 && casttime >= 0:
 		casttime = min(10, casttime + delta)
-		player.get_node("activeCastMeter/number").text = JSON.stringify(int(casttime))
+		player.get_node("activeCastMeter/bar").value = casttime
 		pass
 	
 	
