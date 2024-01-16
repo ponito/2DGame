@@ -58,7 +58,7 @@ func _on_area_2d_body_entered(body):
 		EnemyHyperArmor = EnemyHyperArmor + body.HyperArmor
 	else:
 		pass
-	body.Health -= 30
+	body.Health -= 40
 	self.queue_free()
 	#body.velocity.x += sign(direction.x) * 500
 

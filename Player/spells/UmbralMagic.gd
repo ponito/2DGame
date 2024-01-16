@@ -1,10 +1,13 @@
 extends Node2D
 
 var darkknife = preload("res://Weapons/projectiles/Darkknife.tscn")
+var castmeter = preload("res://Player/castmeter.tscn")
 var activeDarkKnife = null
+var activeCastMeter = null
 var anim_name = null
 var Knockback = 1
 var castposition 
+var casttime = 0
 
 @onready var game = get_node("../../../../..")
 @onready var player = get_node("../../..")
@@ -20,21 +23,35 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
+	
+	if Input.is_action_just_pressed("left_click"):
+		activeCastMeter = castmeter.instantiate()
+		activeCastMeter.name = "activeCastMeter"
+		#activeCastMeter.position = player.position 
+		activeCastMeter.position.y -= 25
+		player.add_child(activeCastMeter)
+		casttime = 0
+	
+	
+	if Input.is_action_pressed("left_click") && player.Stamina >= 0 && player.Fokus > 0 && casttime >= 0:
+		casttime = min(10, casttime + delta)
+		player.get_node("activeCastMeter/number").text = JSON.stringify(int(casttime))
+		pass
 	
 	
 	
-	
-	if Input.is_action_just_released("left_click") && player.Ocupied <= 0 && player.Stamina > 2 && player.Fokus >= 1:
-		activeDarkKnife = darkknife.instantiate()
-		activeDarkKnife.name = "activeDarkKnife"
-		activeDarkKnife.position = player.position 
-		activeDarkKnife.position.y -= 20
-		player.Fokus -= 1
-		player.Stamina -= 2
-		game.add_child(activeDarkKnife)
-		
-	pass
+	if Input.is_action_just_released("left_click"):
+		if casttime >= 3 && player.Ocupied <= 0 && player.Stamina >= 2 && player.Fokus >= 1:
+			activeDarkKnife = darkknife.instantiate()
+			activeDarkKnife.name = "activeDarkKnife"
+			activeDarkKnife.position = player.position 
+			activeDarkKnife.position.y -= 20
+			player.Fokus -= 1
+			player.Stamina -= 2
+			game.add_child(activeDarkKnife)
+		casttime = null
+		player.get_node("activeCastMeter").queue_free()
 
 func _on_animation_player_animation_finished():
 	pass

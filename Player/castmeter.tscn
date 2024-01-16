@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddd3ayj2gsug4"]
+
+[ext_resource type="Theme" uid="uid://chveopgj08abn" path="res://utility/theme/font.tres" id="1_hqn5c"]
+
+[node name="Castmeter" type="Node2D"]
+
+[node name="number" type="RichTextLabel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -23.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_hqn5c")
+text = "1"
+fit_content = true
+drag_and_drop_selection_enabled = false
