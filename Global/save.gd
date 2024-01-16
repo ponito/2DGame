@@ -13,6 +13,7 @@ func saveGame():
 		"maxplayerHealth": master.maxplayerHealth,
 		"playerKnowledge": master.playerKnowledge,
 		"maxplayerStamina": master.maxplayerStamina,
+		"maxplayerFokus": master.maxplayerFokus,
 		"X": master.X,
 		"Y": master.Y
 		

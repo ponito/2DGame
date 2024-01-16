@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 360.0
 const JUMP_VELOCITY = -450.0
+
+var maxHealth = master.playerHealth
 var Health = master.playerHealth:
 	get:
 		return Health
@@ -13,6 +15,8 @@ var Health = master.playerHealth:
 			velocity.x = 0
 			anim.play("Death")
 			Ocupied = 1
+		if Health > maxHealth:
+			Health = maxHealth
 		Health = value
 
 var Knowledge = master.playerKnowledge
@@ -27,8 +31,19 @@ var Stamina = 10:
 			value = 0
 		Stamina = value
 var maxStamina = 10
+var maxtStamina = maxStamina
 var staminaRegTimer = 0
-
+var maxFokus = 10.0
+var Fokus = 10.0:
+	get:
+		return Fokus
+	set(value):
+		Fokus = value
+		maxtStamina = maxStamina * 0.5 + maxStamina * 0.5 *(Fokus/maxFokus)
+		if Stamina > maxtStamina:
+			Stamina = maxtStamina
+			FokusUse.emit()
+	
 
 var HurtTimer = 0
 var Invincibility = 0
@@ -40,6 +55,8 @@ var isWallSliding = 0
 var isLeftWallSliding = false
 var isRightWallSliding = false
 var isClutchHang = 0
+var debug
+signal FokusUse
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #When needed create variable for Animation Player for Animation cutting
@@ -55,6 +72,7 @@ func _ready():
 
 func _physics_process(delta):
 
+
 	#HurtTimer
 	if HurtTimer > 0:
 		velocity.x = lerp(velocity.x, 0., 0.2)
@@ -68,8 +86,8 @@ func _physics_process(delta):
 	if staminaRegTimer > 0:
 		staminaRegTimer = max(0, staminaRegTimer - delta)
 	
-	if Stamina < maxStamina and staminaRegTimer <= 0:
-		Stamina = min(maxStamina, Stamina + 5*delta)
+	if Stamina < maxtStamina and staminaRegTimer <= 0:
+		Stamina = min(maxtStamina, Stamina + 5*delta)
 		
 
 	#fallspeed calculation for falldamage

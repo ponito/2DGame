@@ -1,13 +1,14 @@
-[gd_scene load_steps=31 format=3 uid="uid://bqfrw14wap3v2"]
+[gd_scene load_steps=32 format=3 uid="uid://bqfrw14wap3v2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_yu86q"]
 [ext_resource type="Texture2D" uid="uid://bcavhv4vnj3wq" path="res://images/player/player1.png" id="2_5vrwi"]
+[ext_resource type="PackedScene" uid="uid://dd3e3bhk3dxds" path="res://Player/spells/UmbralMagic.tscn" id="3_5f354"]
 [ext_resource type="Theme" uid="uid://bw7rqfgfbjy2d" path="res://utility/theme/barhealth.tres" id="3_iffvl"]
 [ext_resource type="Script" path="res://Player/Health.gd" id="3_vk1j8"]
-[ext_resource type="PackedScene" uid="uid://dxs33utcftevu" path="res://Weapons/Weapon.tscn" id="3_wcrwa"]
 [ext_resource type="Script" path="res://Player/headdetect.gd" id="4_lwxc2"]
 [ext_resource type="Script" path="res://Player/shoulderdetect.gd" id="4_u3hi2"]
 [ext_resource type="Theme" uid="uid://dbmlaya4joyi" path="res://utility/theme/barstamina.tres" id="5_3t0jo"]
+[ext_resource type="Texture2D" uid="uid://b8bsjkgwp267" path="res://images/player/fokus.png" id="9_wvecq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mboc"]
 size = Vector2(21, 1)
@@ -5826,12 +5827,36 @@ _data = {
 [sub_resource type="GDScript" id="GDScript_phppx"]
 script/source = "extends ProgressBar
 
-
+@onready var player = get_node(\"../../..\")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _ready():
+	setup()
 func _process(delta):
-	value = get_node(\"../../..\").Stamina
-	max_value = master.maxplayerStamina
-	pass
+	
+	
+	value = player.Stamina
+	
+
+
+
+func setup():
+	max_value = player.maxStamina
+	offset_right = player.maxStamina * 20
+	#size.x = player.maxStamina * 20
+	
+	#Setzt den Fokus Marker an die Richtige Stelle
+	#Fokus Position = Position der Rechten und Linken marker Seiten, - PlayermaxStamina *(Hälfte) - Position der Staminabar + kleiner Rest für optische Schönheit mit dem Rand
+	get_node(\"../Fokus\").position.x = offset_right - offset_left - player.maxStamina * 10 -1.42-39 +0.7
+
+
+
+
+func _on_character_body_2d_fokus_use():
+	max_value = player.maxtStamina
+	offset_right = player.maxStamina * 10 + (player.maxStamina * 10 * (player.Fokus/player.maxFokus))
+	#size.x = player.maxStamina * 10 + (player.maxStamina * 10 * (player.Fokus/player.maxFokus))
+	pass # Replace with function body.
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_qe4oe"]
@@ -5875,10 +5900,7 @@ polygon = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748
 uv = PackedVector2Array(44.7552, 14.965, 49.5105, 15.8042, 49.9301, 25.1748, 50.3497, 35.8042, 44.4755, 35.5245, 44.0559, 24.1958)
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armleft1", PackedFloat32Array(0.37, 0.37, 0, 0, 0, 0), "hip/spine/armleft1/armleft2", PackedFloat32Array(0, 0, 0.74, 0, 0, 0.37), "hip/spine/armleft1/armleft2/armleft3", PackedFloat32Array(0, 0, 0, 0.37, 0.37, 0), "hip/spine/armright1", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine/armright1/armright2/armright3", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
-[node name="Weapon" parent="Sprite/armleft" instance=ExtResource("3_wcrwa")]
-position = Vector2(22.634, 15.7533)
-rotation = -0.75116
-scale = Vector2(1, 1)
+[node name="UmbralMagic" parent="Sprite/armleft" instance=ExtResource("3_5f354")]
 
 [node name="Torso" type="Polygon2D" parent="Sprite"]
 visibility_layer = 16
@@ -6011,8 +6033,10 @@ length = 16.0
 bone_angle = -80.1171
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/Skeleton2D/hip/spine/armleft1/armleft2/armleft3/handleft"]
+editor_description = "Wird bei dem Laden einer Waffe zugewiesen.
+Ignorier die Warnung
+"
 position = Vector2(-0.174298, -0.984693)
-remote_path = NodePath("../../../../../../../../armleft/Weapon")
 
 [node name="legright1" type="Bone2D" parent="Sprite/Skeleton2D/hip"]
 position = Vector2(3.59333, 1.14092)
@@ -6081,9 +6105,9 @@ anchor_left = -1.442
 anchor_top = 0.089
 anchor_right = -1.442
 anchor_bottom = 0.095
-offset_left = 14.68
+offset_left = 18.68
 offset_top = 21.44
-offset_right = 273.68
+offset_right = 292.36
 offset_bottom = 67.2
 theme = ExtResource("3_iffvl")
 step = 0.0
@@ -6101,10 +6125,10 @@ anchor_left = -1.442
 anchor_top = 0.089
 anchor_right = -1.442
 anchor_bottom = 0.095
-offset_left = 14.68
-offset_top = 85.44
-offset_right = 239.68
-offset_bottom = 125.2
+offset_left = 18.68
+offset_top = 84.44
+offset_right = 218.68
+offset_bottom = 124.2
 theme = ExtResource("5_3t0jo")
 step = 0.0
 page = 2.0
@@ -6112,6 +6136,11 @@ value = 50.0
 allow_greater = true
 show_percentage = false
 script = SubResource("GDScript_phppx")
+
+[node name="Fokus" type="Sprite2D" parent="UI/Control"]
+position = Vector2(92.75, 107.906)
+scale = Vector2(1.421, 1.424)
+texture = ExtResource("9_wvecq")
 
 [node name="deathscreen" type="Control" parent="UI"]
 visible = false
@@ -6152,10 +6181,10 @@ limit_left = 0
 limit_smoothed = true
 position_smoothing_speed = 8.0
 
+[connection signal="FokusUse" from="." to="UI/Control/Stamina" method="_on_character_body_2d_fokus_use"]
 [connection signal="body_entered" from="Sprite/Torso/Area2D" to="Sprite/Torso/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Sprite/Torso/Area2D" to="Sprite/Torso/Area2D" method="_on_body_exited"]
 [connection signal="body_entered" from="Sprite/head/Area2D" to="Sprite/head/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Sprite/head/Area2D" to="Sprite/head/Area2D" method="_on_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="Sprite/armleft/Weapon" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="UI/deathscreen/Label" method="_on_animation_player_animation_finished"]
