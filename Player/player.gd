@@ -33,8 +33,8 @@ var Stamina = 10:
 var maxStamina = 10
 var maxtStamina = maxStamina
 var staminaRegTimer = 0
-var maxFokus = 10.0
-var Fokus = 10.0:
+var maxFokus = 20.0
+var Fokus = 20.0:
 	get:
 		return Fokus
 	set(value):

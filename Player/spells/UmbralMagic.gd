@@ -7,7 +7,7 @@ var activeCastMeter = null
 var anim_name = null
 var Knockback = 1
 var castposition 
-var casttime = 0
+var casttime = null
 
 @onready var game = get_node("../../../../..")
 @onready var player = get_node("../../..")
@@ -25,7 +25,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") && player.Stamina >= 0 && player.Fokus > 0 && casttime == null:
 		activeCastMeter = castmeter.instantiate()
 		activeCastMeter.name = "activeCastMeter"
 		#activeCastMeter.position = player.position 
@@ -34,7 +34,7 @@ func _process(delta):
 		casttime = 0
 	
 	
-	if Input.is_action_pressed("left_click") && player.Stamina >= 0 && player.Fokus > 0 && casttime >= 0:
+	if Input.is_action_pressed("left_click") && player.Stamina >= 0 && player.Fokus > 0 && casttime != null:
 		casttime = min(10, casttime + delta)
 		player.get_node("activeCastMeter/bar").value = casttime
 		pass
