@@ -1,5 +1,4 @@
 extends Node2D
-
 var weaponEffect = preload("res://Weapons/WeaponEffect.tscn")
 var activeWeaponEffect = null
 var anim_name = null

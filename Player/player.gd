@@ -69,6 +69,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var Weapon1 = preload("res://Weapons/Weapon.tscn")
 var Magic2 = preload("res://Player/spells/UmbralMagic.tscn")
 var activeWeapon = null
+var activeWeaponSlot = 1
+
+
 
 
 
@@ -245,14 +248,16 @@ func _physics_process(delta):
 	
 	
 	#Vorläufiger Waffenwechsel
-	if Input.is_action_just_pressed("1"):
+	if Input.is_action_just_pressed("1") && activeWeaponSlot != 1:
 		get_node("Sprite/armleft").get_child(0).queue_free()
 		activeWeapon = Weapon1.instantiate()
+		activeWeaponSlot = 1
 		get_node("Sprite/armleft").add_child(activeWeapon)
 	
-	if Input.is_action_just_pressed("2"):
+	if Input.is_action_just_pressed("2") && activeWeaponSlot != 2:
 		get_node("Sprite/armleft").get_child(0).queue_free()
 		activeWeapon = Magic2.instantiate()
+		activeWeaponSlot = 2
 		get_node("Sprite/armleft").add_child(activeWeapon)
 	
 

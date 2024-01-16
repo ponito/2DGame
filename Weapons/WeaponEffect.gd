@@ -3,6 +3,10 @@ var EnemyHyperArmor = 0
 @onready var player = get_node("../../../..")
 @onready var weapon = get_node("..")
 
+
+func _on_ready():
+	modulate.a=0
+
 func _on_area_2d_body_entered(body):
 	var direction = (body.position - player.position).normalized()
 	body.position.y += -5
