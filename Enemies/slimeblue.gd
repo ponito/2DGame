@@ -81,6 +81,7 @@ func _on_hitbox_body_entered(body):
 		if body.Invincibility == 0:
 			body.HurtTimer = 0.2
 			body.Invincibility = 0.5
+			direction = 0
 			direction = (player.position - self.position).normalized()
 			body.velocity.x = sign(direction.x) * 1000
 			velocity.x -= sign(direction.x) * 400

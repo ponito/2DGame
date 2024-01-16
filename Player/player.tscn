@@ -5846,8 +5846,8 @@ func setup():
 	#size.x = player.maxStamina * 20
 	
 	#Setzt den Fokus Marker an die Richtige Stelle
-	#Fokus Position = Position der Rechten und Linken marker Seiten, - PlayermaxStamina *(Hälfte) - Position der Staminabar + kleiner Rest für optische Schönheit mit dem Rand
-	get_node(\"../Fokus\").position.x = offset_right - offset_left - player.maxStamina * 10 -1.42-39 +0.7
+	#Fokus Position = Position der Rechten und Linken marker Seiten, - PlayermaxStamina *(Hälfte) - Position der Staminabar - Länge Fokusmarker + kleiner Rest für optische Schönheit mit dem Rand
+	get_node(\"../Fokus\").position.x = offset_right - offset_left - player.maxStamina * 10 + position.x - 14 +2
 
 
 

@@ -42,7 +42,7 @@ var Fokus = 10.0:
 		maxtStamina = maxStamina * 0.5 + maxStamina * 0.5 *(Fokus/maxFokus)
 		if Stamina > maxtStamina:
 			Stamina = maxtStamina
-			FokusUse.emit()
+		FokusUse.emit()
 	
 
 var HurtTimer = 0

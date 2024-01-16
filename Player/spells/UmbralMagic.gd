@@ -25,12 +25,13 @@ func _process(_delta):
 	
 	
 	
-	if Input.is_action_just_released("left_click") && player.Ocupied <= 0 && player.Stamina > 2 && player.Fokus > 1:
+	if Input.is_action_just_released("left_click") && player.Ocupied <= 0 && player.Stamina > 2 && player.Fokus >= 1:
 		activeDarkKnife = darkknife.instantiate()
 		activeDarkKnife.name = "activeDarkKnife"
 		activeDarkKnife.position = player.position 
 		activeDarkKnife.position.y -= 20
 		player.Fokus -= 1
+		player.Stamina -= 2
 		game.add_child(activeDarkKnife)
 		
 	pass
