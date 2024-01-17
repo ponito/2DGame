@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://7xigagtfv3kf"]
+[gd_scene load_steps=6 format=3 uid="uid://7xigagtfv3kf"]
 
 [ext_resource type="Script" path="res://Player/runedraw.gd" id="1_u2drk"]
 [ext_resource type="Texture2D" uid="uid://dwgsalnk070cs" path="res://images/player/menu/spellring.png" id="2_qonto"]
@@ -17,6 +17,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_fsjry"]
+offsets = PackedFloat32Array(0.2, 0.4, 0.6, 0.8, 1)
+colors = PackedColorArray(0.189022, 0.013341, 0.399399, 1, 0.305882, 0.0313726, 0.909804, 1, 0.478431, 0.278431, 0.996078, 1, 0.47835, 0.279721, 0.997666, 0.901961, 0.572549, 0.176471, 1, 0.901961)
+metadata/_snap_enabled = true
+
 [node name="Runedraw" type="Node2D"]
 script = ExtResource("1_u2drk")
 
@@ -24,8 +29,8 @@ script = ExtResource("1_u2drk")
 
 [node name="Mid" type="Area2D" parent="Base"]
 scale = Vector2(0.75, 0.75)
-collision_layer = 0
 collision_mask = 0
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Mid"]
 shape = SubResource("CircleShape2D_pfof4")
@@ -38,7 +43,6 @@ animation = &"base"
 [node name="Up" type="Area2D" parent="Base"]
 position = Vector2(0, -30)
 scale = Vector2(0.75, 0.75)
-collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Up"]
@@ -52,7 +56,6 @@ animation = &"base"
 [node name="Down" type="Area2D" parent="Base"]
 position = Vector2(0, 30)
 scale = Vector2(0.75, 0.75)
-collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Down"]
@@ -66,7 +69,6 @@ animation = &"base"
 [node name="Left" type="Area2D" parent="Base"]
 position = Vector2(-30, 0)
 scale = Vector2(0.75, 0.75)
-collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Left"]
@@ -80,7 +82,6 @@ animation = &"base"
 [node name="Right" type="Area2D" parent="Base"]
 position = Vector2(30, 0)
 scale = Vector2(0.75, 0.75)
-collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Right"]
@@ -91,6 +92,72 @@ scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
 animation = &"base"
 
+[node name="RightDown" type="Area2D" parent="Base"]
+position = Vector2(22, 22)
+scale = Vector2(0.75, 0.75)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/RightDown"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/RightDown"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
+
+[node name="DownLeft" type="Area2D" parent="Base"]
+position = Vector2(-22, 22)
+scale = Vector2(0.75, 0.75)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/DownLeft"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/DownLeft"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
+
+[node name="LeftUp" type="Area2D" parent="Base"]
+position = Vector2(-22, -22)
+scale = Vector2(0.75, 0.75)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/LeftUp"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/LeftUp"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
+
+[node name="UpRight" type="Area2D" parent="Base"]
+position = Vector2(22, -22)
+scale = Vector2(0.75, 0.75)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/UpRight"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/UpRight"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
+
 [node name="Rune2D" type="Line2D" parent="Base"]
 points = PackedVector2Array(2, 54)
-default_color = Color(1, 0, 0.0941176, 1)
+width = 3.0
+default_color = Color(0.741176, 0.815686, 1, 1)
+gradient = SubResource("Gradient_fsjry")
+joint_mode = 2
+begin_cap_mode = 2
+
+[connection signal="mouse_entered" from="Base/Mid" to="." method="_mouse_entered" binds= ["Mid", Vector2(0, 0)]]
+[connection signal="mouse_entered" from="Base/Up" to="." method="_mouse_entered" binds= ["Up", Vector2(0, -30)]]
+[connection signal="mouse_entered" from="Base/Down" to="." method="_mouse_entered" binds= ["Down", Vector2(0, 30)]]
+[connection signal="mouse_entered" from="Base/Left" to="." method="_mouse_entered" binds= ["Left", Vector2(-30, 0)]]
+[connection signal="mouse_entered" from="Base/Right" to="." method="_mouse_entered" binds= ["Right", Vector2(30, 0)]]
+[connection signal="mouse_entered" from="Base/RightDown" to="." method="_mouse_entered" binds= ["RightDown", Vector2(22, 22)]]
+[connection signal="mouse_entered" from="Base/DownLeft" to="." method="_mouse_entered" binds= ["DownLeft", Vector2(-22, 22)]]
+[connection signal="mouse_entered" from="Base/LeftUp" to="." method="_mouse_entered" binds= ["LeftUp", Vector2(-22, -22)]]
+[connection signal="mouse_entered" from="Base/UpRight" to="." method="_mouse_entered" binds= ["UpRight", Vector2(22, -22)]]

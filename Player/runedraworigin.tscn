@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfke11f0wj3di"]
+
+[ext_resource type="Texture2D" uid="uid://mpeo0mr52k75" path="res://images/player/menu/spellorigin.png" id="1_71xtu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y615t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_71xtu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Runedraworigin" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_y615t")
