@@ -1,20 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://7xigagtfv3kf"]
+[gd_scene load_steps=10 format=3 uid="uid://7xigagtfv3kf"]
 
 [ext_resource type="Script" path="res://Player/runedraw.gd" id="1_u2drk"]
-[ext_resource type="Texture2D" uid="uid://dwgsalnk070cs" path="res://images/player/menu/spellring.png" id="2_qonto"]
+[ext_resource type="Texture2D" uid="uid://i2umsmgot2uw" path="res://images/player/menu/spellringv2.png" id="2_vlgr5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfof4"]
 radius = 7.07107
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdl6e"]
+atlas = ExtResource("2_vlgr5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28xn1"]
+atlas = ExtResource("2_vlgr5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp6nd"]
+atlas = ExtResource("2_vlgr5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qshdc"]
+atlas = ExtResource("2_vlgr5")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_itmy7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qonto")
+"texture": SubResource("AtlasTexture_mdl6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28xn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp6nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qshdc")
 }],
-"loop": true,
-"name": &"base",
-"speed": 5.0
+"loop": false,
+"name": &"appear",
+"speed": 10.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_fsjry"]
@@ -28,6 +53,7 @@ script = ExtResource("1_u2drk")
 [node name="Base" type="Node2D" parent="."]
 
 [node name="Mid" type="Area2D" parent="Base"]
+visible = false
 scale = Vector2(0.75, 0.75)
 collision_mask = 0
 monitoring = false
@@ -35,10 +61,13 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Mid"]
 shape = SubResource("CircleShape2D_pfof4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Mid"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Mid/CollisionShape2D"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
+frame = 3
+frame_progress = 1.0
 
 [node name="Up" type="Area2D" parent="Base"]
 position = Vector2(0, -30)
@@ -51,7 +80,8 @@ shape = SubResource("CircleShape2D_pfof4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Up"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
 
 [node name="Down" type="Area2D" parent="Base"]
 position = Vector2(0, 30)
@@ -64,7 +94,8 @@ shape = SubResource("CircleShape2D_pfof4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Down"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
 
 [node name="Left" type="Area2D" parent="Base"]
 position = Vector2(-30, 0)
@@ -77,7 +108,8 @@ shape = SubResource("CircleShape2D_pfof4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Left"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
 
 [node name="Right" type="Area2D" parent="Base"]
 position = Vector2(30, 0)
@@ -90,7 +122,8 @@ shape = SubResource("CircleShape2D_pfof4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Right"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
 
 [node name="RightDown" type="Area2D" parent="Base"]
 position = Vector2(22, 22)
@@ -103,7 +136,8 @@ shape = SubResource("CircleShape2D_pfof4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/RightDown"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
 
 [node name="DownLeft" type="Area2D" parent="Base"]
 position = Vector2(-22, 22)
@@ -116,7 +150,8 @@ shape = SubResource("CircleShape2D_pfof4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/DownLeft"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
 
 [node name="LeftUp" type="Area2D" parent="Base"]
 position = Vector2(-22, -22)
@@ -129,7 +164,8 @@ shape = SubResource("CircleShape2D_pfof4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/LeftUp"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
 
 [node name="UpRight" type="Area2D" parent="Base"]
 position = Vector2(22, -22)
@@ -142,7 +178,8 @@ shape = SubResource("CircleShape2D_pfof4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/UpRight"]
 scale = Vector2(0.531, 0.531)
 sprite_frames = SubResource("SpriteFrames_itmy7")
-animation = &"base"
+animation = &"appear"
+autoplay = "appear"
 
 [node name="Rune2D" type="Line2D" parent="Base"]
 points = PackedVector2Array(2, 54)

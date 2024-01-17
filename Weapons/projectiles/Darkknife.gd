@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var LifeTime = 40
+var LifeTime = 10
 var speed = 600
 var EnemyHyperArmor = 0
 

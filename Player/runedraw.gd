@@ -12,7 +12,6 @@ var spelldraworigin = preload("res://Player/runedraworigin.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("Base").position= get_local_mouse_position()
-	symbolarray.append("Du")
 	pass
 	
 
@@ -43,7 +42,6 @@ func _mouse_entered(Name, Place):
 	#Test if current drawpart is already the last and if not, adds it to the array
 	if test_if_last_self(Name) == false and Name != "Mid":
 		symbolarray.append(Name)
-		print(symbolarray)
 		
 		#Adds Coordinats of Points to Line Array, and makes that the Points of the Rune V
 		if linearray.size() == 0:
@@ -62,5 +60,4 @@ func _controll_line():
 	pass
 	
 func _process(_delta):
-	#print(test_if_last_self(""))
 	pass

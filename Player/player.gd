@@ -67,7 +67,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #Vorläufiges Inventar, soll später ersetzt werden
 var Weapon1 = preload("res://Weapons/Weapon.tscn")
-var Magic2 = preload("res://Player/spells/UmbralMagic.tscn")
+var Magic2 = preload("res://Player/spells/UmbraMagic.tscn")
 var activeWeapon = null
 var activeWeaponSlot = 1
 
