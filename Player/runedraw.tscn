@@ -1,36 +1,96 @@
-[gd_scene load_steps=4 format=3 uid="uid://7xigagtfv3kf"]
+[gd_scene load_steps=5 format=3 uid="uid://7xigagtfv3kf"]
 
 [ext_resource type="Script" path="res://Player/runedraw.gd" id="1_u2drk"]
-[ext_resource type="Texture2D" uid="uid://bawmyo7tf6r5w" path="res://icon.svg" id="2_lioa4"]
+[ext_resource type="Texture2D" uid="uid://dwgsalnk070cs" path="res://images/player/menu/spellring.png" id="2_qonto"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nc1l4"]
-radius = 107.075
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfof4"]
+radius = 7.07107
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itmy7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qonto")
+}],
+"loop": true,
+"name": &"base",
+"speed": 5.0
+}]
 
 [node name="Runedraw" type="Node2D"]
 script = ExtResource("1_u2drk")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="Base" type="Node2D" parent="."]
 
-[node name="Base" type="Node2D" parent="CanvasLayer"]
+[node name="Mid" type="Area2D" parent="Base"]
+scale = Vector2(0.75, 0.75)
+collision_layer = 0
+collision_mask = 0
 
-[node name="Up" type="Area2D" parent="CanvasLayer/Base"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Mid"]
+shape = SubResource("CircleShape2D_pfof4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Base/Up"]
-light_mask = 0
-rotation = 1.5708
-shape = SubResource("CircleShape2D_nc1l4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Mid"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
 
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Base"]
-rotation = 0.785398
-texture = ExtResource("2_lioa4")
+[node name="Up" type="Area2D" parent="Base"]
+position = Vector2(0, -30)
+scale = Vector2(0.75, 0.75)
+collision_layer = 0
+collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Base/Sprite2D2"]
-rotation = -0.785398
-texture = ExtResource("2_lioa4")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Up"]
+shape = SubResource("CircleShape2D_pfof4")
 
-[node name="Rune2D" type="Line2D" parent="CanvasLayer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Up"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
+
+[node name="Down" type="Area2D" parent="Base"]
+position = Vector2(0, 30)
+scale = Vector2(0.75, 0.75)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Down"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Down"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
+
+[node name="Left" type="Area2D" parent="Base"]
+position = Vector2(-30, 0)
+scale = Vector2(0.75, 0.75)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Left"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Left"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
+
+[node name="Right" type="Area2D" parent="Base"]
+position = Vector2(30, 0)
+scale = Vector2(0.75, 0.75)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Right"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Base/Right"]
+scale = Vector2(0.531, 0.531)
+sprite_frames = SubResource("SpriteFrames_itmy7")
+animation = &"base"
+
+[node name="Rune2D" type="Line2D" parent="Base"]
 points = PackedVector2Array(2, 54)
 default_color = Color(1, 0, 0.0941176, 1)
-
-[connection signal="mouse_exited" from="CanvasLayer/Base/Up" to="." method="_on_up_mouse_exited"]

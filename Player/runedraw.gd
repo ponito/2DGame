@@ -1,30 +1,22 @@
 extends Node2D
 
-var array = []
-var debug = null
+
+var symbolarray = []
 @onready var player = get_node("../../../..")
-@onready var drawinterface = get_node("CanvasLayer/Base")
-@onready var drawnrune = get_node("CanvasLayer/Rune2D")
+@onready var drawinterface = get_node("Base")
+@onready var drawnrune = get_node("Base/Rune2D")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	drawinterface.position = get_global_mouse_position()
-	array.append(drawinterface.position)
-	pass # Replace with function body.
-
+	get_node("Base").position= get_local_mouse_position()
+	print(get_global_mouse_position())
+	pass
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(symbolarray)
 	pass
 
 
-
-
-
-
-
-func _on_up_mouse_exited():
-	debug = get_global_mouse_position()
-	drawinterface.position = debug
-	array.append(drawinterface.position)
-	drawnrune.set_points(array)
-	pass # Replace with function body.
+func test_if_last_self():
+	pass

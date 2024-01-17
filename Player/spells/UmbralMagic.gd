@@ -9,6 +9,7 @@ var anim_name = null
 var Knockback = 1
 var castposition 
 var casttime = null
+var mousepos
 
 var Rune1 = null
 var Rune2 = null
@@ -33,6 +34,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
+	
 	if Input.is_action_just_pressed("left_click") && player.Stamina >= 0 && player.Fokus > 0 && casttime == null:
 		activeCastMeter = castmeter.instantiate()
 		activeCastMeter.name = "activeCastMeter"
@@ -43,7 +45,7 @@ func _process(delta):
 		
 		activeSpell = runedraw.instantiate()
 		activeSpell.name = "activeSpell"
-		self.add_child(activeSpell)
+		player.add_child(activeSpell)
 	
 	
 	if Input.is_action_pressed("left_click") && player.Stamina >= 0 && player.Fokus > 0 && casttime != null:
@@ -64,7 +66,7 @@ func _process(delta):
 			game.add_child(activeSpell)
 		casttime = null
 		player.get_node("activeCastMeter").queue_free()
-		get_node("activeSpell").queue_free()
+		player.get_node("activeSpell").queue_free()
 
 func _on_animation_player_animation_finished():
 	pass

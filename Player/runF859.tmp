@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://7xigagtfv3kf"]
+
+[ext_resource type="Script" path="res://Player/runedraw.gd" id="1_u2drk"]
+[ext_resource type="Texture2D" uid="uid://dwgsalnk070cs" path="res://images/player/menu/spellring.png" id="2_qonto"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfof4"]
+radius = 7.07107
+
+[node name="Runedraw" type="Node2D"]
+script = ExtResource("1_u2drk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Base" type="Node2D" parent="CanvasLayer"]
+
+[node name="Mid" type="Area2D" parent="CanvasLayer/Base"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Base/Mid"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Base/Mid"]
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("2_qonto")
+
+[node name="Up" type="Area2D" parent="CanvasLayer/Base"]
+position = Vector2(0, -30)
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Base/Up"]
+shape = SubResource("CircleShape2D_pfof4")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Base/Up"]
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("2_qonto")
+
+[node name="Rune2D" type="Line2D" parent="CanvasLayer"]
+points = PackedVector2Array(2, 54)
+default_color = Color(1, 0, 0.0941176, 1)

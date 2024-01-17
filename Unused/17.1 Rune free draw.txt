@@ -1,0 +1,58 @@
+extends Node2D
+
+var array = []
+var directionsarray = [ Vector2(1, 0),Vector2(0, 1), Vector2(0, -1),Vector2(-1, 0),]
+var newposition = null
+var currentV = null
+var speed = null
+var closest = null
+
+@onready var player = get_node("../../../..")
+@onready var drawinterface = get_node("CanvasLayer/Base")
+@onready var drawnrune = get_node("CanvasLayer/Rune2D")
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	drawinterface.position = get_global_mouse_position()
+	newposition = drawinterface.position
+	array.append(drawinterface.position)
+	
+	
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		speed = event.get_relative()
+		speed = speed.normalized()
+	find_closest_Vector()
+
+
+
+
+
+
+
+
+
+func find_closest_Vector():
+	var closespoint_distance_tn = null
+	var closest_distance
+	for points in directionsarray:
+		closest_distance = speed.distance_to(points)
+		if closespoint_distance_tn == null or closespoint_distance_tn > closest_distance:
+			closespoint_distance_tn = closest_distance
+			closest = points
+	return closest
+
+
+func _on_up_mouse_exited():
+
+	newposition += closest*100 
+	drawinterface.position = newposition 
+	array.append(newposition)
+	drawnrune.set_points(array)
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	speed = null
+	pass
+
