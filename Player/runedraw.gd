@@ -1,11 +1,14 @@
 extends Node2D
 
-var array = [Vector2(0, 0)]
+var array = []
+var debug = null
 @onready var player = get_node("../../../..")
 @onready var drawinterface = get_node("CanvasLayer/Base")
+@onready var drawnrune = get_node("CanvasLayer/Rune2D")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	drawinterface.position = get_global_mouse_position()
+	array.append(drawinterface.position)
 	pass # Replace with function body.
 
 
@@ -20,10 +23,8 @@ func _process(delta):
 
 
 func _on_up_mouse_exited():
-	print(array)
-	drawinterface.position = get_global_mouse_position()
-	array.append(drawinterface.position - drawinterface.position)
-	get_node("CanvasLayer/Base/Rune2D").set_points(array)
-	
-	print(get_global_mouse_position())
+	debug = get_global_mouse_position()
+	drawinterface.position = debug
+	array.append(drawinterface.position)
+	drawnrune.set_points(array)
 	pass # Replace with function body.

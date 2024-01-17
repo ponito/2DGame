@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bawmyo7tf6r5w" path="res://icon.svg" id="2_lioa4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nc1l4"]
-radius = 88.955
+radius = 107.075
 
 [node name="Runedraw" type="Node2D"]
 script = ExtResource("1_u2drk")
@@ -29,7 +29,7 @@ texture = ExtResource("2_lioa4")
 rotation = -0.785398
 texture = ExtResource("2_lioa4")
 
-[node name="Rune2D" type="Line2D" parent="CanvasLayer/Base"]
+[node name="Rune2D" type="Line2D" parent="CanvasLayer"]
 points = PackedVector2Array(2, 54)
 default_color = Color(1, 0, 0.0941176, 1)
 
