@@ -1,16 +1,62 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfke11f0wj3di"]
+[gd_scene load_steps=10 format=3 uid="uid://bfke11f0wj3di"]
 
 [ext_resource type="Texture2D" uid="uid://mpeo0mr52k75" path="res://images/player/menu/spellorigin.png" id="1_71xtu"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_y615t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjoah"]
+atlas = ExtResource("1_71xtu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuj1b"]
+atlas = ExtResource("1_71xtu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3or0h"]
+atlas = ExtResource("1_71xtu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i2hv"]
+atlas = ExtResource("1_71xtu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o3x0"]
+atlas = ExtResource("1_71xtu")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g8xb"]
+atlas = ExtResource("1_71xtu")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv6uf"]
+atlas = ExtResource("1_71xtu")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b78cb"]
 animations = [{
 "frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_gjoah")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_iuj1b")
+}, {
 "duration": 1.0,
-"texture": ExtResource("1_71xtu")
+"texture": SubResource("AtlasTexture_3or0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i2hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o3x0")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_0g8xb")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_lv6uf")
 }],
-"loop": true,
-"name": &"default",
-"speed": 5.0
+"loop": false,
+"name": &"appear",
+"speed": 1.0
 }]
 
 [node name="Runedraworigin" type="Node2D"]
@@ -18,4 +64,8 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 1)
 scale = Vector2(0.9, 0.9)
-sprite_frames = SubResource("SpriteFrames_y615t")
+sprite_frames = SubResource("SpriteFrames_b78cb")
+animation = &"appear"
+autoplay = "appear"
+frame = 6
+frame_progress = 1.0
