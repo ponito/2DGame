@@ -33,6 +33,14 @@ func _process(_delta):
 
 
 func _physics_process(delta):
+	
+	#slime bounce of walls
+	if is_on_wall():
+		if get_node("AnimatedSprite2D").flip_h == false:
+			velocity.x = velocity.x - SPEED
+		else:
+			velocity.x = velocity.x + SPEED
+			pass
 	#Gravity for the Enemy
 	velocity.y += gravity * delta	
 	

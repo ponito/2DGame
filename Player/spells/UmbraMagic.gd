@@ -55,14 +55,17 @@ func _process(delta):
 			symbolarray = player.get_node("activeRuneDraw").symbolarray
 			spellbooktest.emit(casttime, player.Ocupied, player.Fokus, player.Stamina,symbolarray)
 			player.get_node("activeRuneDraw").queue_free()
-		else:
+		elif player.Stamina >= 0 && player.Fokus > 0 && casttime == null && player.Ocupied != 1:
 			activeRuneDraw = runedraw.instantiate()
 			activeRuneDraw.name = "activeRuneDraw"
 			player.add_child(activeRuneDraw)
 	
 	
 	if Input.is_action_pressed("left_click") && player.Stamina >= 0 && player.Fokus > 0 && casttime != null:
-		casttime = min(10, casttime + delta)
+		if player.velocity.x > 0.1 or player.velocity.x < -0.1:
+			casttime = min(10, casttime + delta/1.5)
+		else:
+			casttime = min(10, casttime + delta)
 		player.get_node("activeCastMeter/bar").value = casttime
 	
 	

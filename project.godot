@@ -21,6 +21,12 @@ config/icon="res://icon.svg"
 master="*res://Global/master.gd"
 save="*res://Global/save.gd"
 
+[display]
+
+window/size/viewport_width=1352
+window/size/viewport_height=718
+window/stretch/mode="viewport"
+
 [input]
 
 Right={
