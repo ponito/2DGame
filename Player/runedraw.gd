@@ -52,12 +52,7 @@ func _mouse_entered(Name, Place):
 		linearray.append(Place)
 		drawnrune.points = linearray
 		
-		pass
-	pass # Replace with function body.
 
-func _controll_line():
-	drawnrune.points = linearray
-	pass
 	
 func _process(_delta):
 	pass

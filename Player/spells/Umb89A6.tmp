@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd3e3bhk3dxds"]
+
+[ext_resource type="Script" path="res://Player/spells/UmbraMagic.gd" id="1_thsnm"]
+
+[node name="UmbraMagic" type="Node2D"]
+script = ExtResource("1_thsnm")

@@ -51,6 +51,7 @@ metadata/_snap_enabled = true
 script = ExtResource("1_u2drk")
 
 [node name="Base" type="Node2D" parent="."]
+scale = Vector2(1.2, 1.2)
 
 [node name="Mid" type="Area2D" parent="Base"]
 visible = false

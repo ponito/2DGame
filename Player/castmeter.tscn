@@ -1,7 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddd3ayj2gsug4"]
+[gd_scene load_steps=12 format=3 uid="uid://ddd3ayj2gsug4"]
 
 [ext_resource type="Theme" uid="uid://chveopgj08abn" path="res://utility/theme/font.tres" id="1_hqn5c"]
 [ext_resource type="Theme" uid="uid://b0h60l35v3ojd" path="res://utility/theme/castbar.tres" id="2_qjhgj"]
+[ext_resource type="Texture2D" uid="uid://bxnmplnyjs4qf" path="res://images/player/menu/knotv2.png" id="3_6akdo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qop3l"]
+atlas = ExtResource("3_6akdo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txkwc"]
+atlas = ExtResource("3_6akdo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsubw"]
+atlas = ExtResource("3_6akdo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58dy4"]
+atlas = ExtResource("3_6akdo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74owh"]
+atlas = ExtResource("3_6akdo")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uecx"]
+atlas = ExtResource("3_6akdo")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2gr3"]
+atlas = ExtResource("3_6akdo")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fob1m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qop3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txkwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsubw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58dy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74owh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uecx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2gr3")
+}],
+"loop": true,
+"name": &"loop",
+"speed": 2.0
+}]
 
 [node name="Castmeter" type="Node2D"]
 
@@ -23,6 +81,7 @@ fit_content = true
 drag_and_drop_selection_enabled = false
 
 [node name="bar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -18.0
 offset_top = -19.0
 offset_right = 19.0
@@ -33,8 +92,9 @@ step = 0.05
 value = 3.0
 show_percentage = false
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(-7, -13, -7, -17)
-width = 0.5
-default_color = Color(0.854902, 0.423529, 0.992157, 1)
-joint_mode = 2
+[node name="wait" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.207031, 0.207031)
+sprite_frames = SubResource("SpriteFrames_fob1m")
+animation = &"loop"
+autoplay = "loop"
