@@ -7,10 +7,16 @@ func _on_quit_pressed():
 func _on_play_pressed():
 	anim.play("Game Start")
 	save.loadGame()
-	await get_tree().create_timer(1.05).timeout
-	get_tree().change_scene_to_file("res://game.tscn")
-	
-	
 
 
 
+
+
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Game Start":
+		get_tree().change_scene_to_file("res://worlds/loadingscreen/loadingscreen.tscn")
+	else:
+		print("Error")
+	pass # Replace with function body.

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2v0wwtdxf6cr"]
+[gd_scene load_steps=7 format=3 uid="uid://b2v0wwtdxf6cr"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_bj3h1"]
+[ext_resource type="Texture2D" uid="uid://c1kcv3af2yf0d" path="res://images/player/menu/Loadingscreenv1.png" id="2_e4m0c"]
 
 [sub_resource type="Animation" id="Animation_8u1dr"]
 resource_name = "Game Start"
@@ -38,6 +39,17 @@ _data = {
 "RESET": SubResource("Animation_l6j4b")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_mtr08"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e4m0c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_bj3h1")
 
@@ -69,5 +81,26 @@ libraries = {
 "": SubResource("AnimationLibrary_qv25h")
 }
 
+[node name="UI" type="CanvasLayer" parent="."]
+editor_description = "Is here because moves when screen size changes!
+Is change able if you solve the problem.
+"
+layer = 0
+
+[node name="Control" type="Control" parent="UI"]
+show_behind_parent = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 58.0
+offset_top = -4.0
+offset_right = 98.0
+offset_bottom = 36.0
+
+[node name="LoadingScreen" type="AnimatedSprite2D" parent="UI/Control"]
+position = Vector2(557.315, 349.844)
+scale = Vector2(0.661675, 0.648208)
+sprite_frames = SubResource("SpriteFrames_mtr08")
+
 [connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

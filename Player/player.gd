@@ -78,9 +78,11 @@ var activeWeaponSlot = 1
 func _ready():
 	position.x = master.X
 	position.y = master.Y
-	
+
 
 func _physics_process(delta):
+
+
 
 
 	#HurtTimer
@@ -236,6 +238,7 @@ func _physics_process(delta):
 			
 			
 			anim.play("Idle")
+			pass
 		
 	if velocity.y > 0 and isWallSliding <= 0 && Ocupied <= 0:
 		anim.play("Fall")
@@ -270,3 +273,5 @@ func _physics_process(delta):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fallthroughclutch":
 		Ocupied = 0
+	if anim_name == "load":
+		print("Hi")

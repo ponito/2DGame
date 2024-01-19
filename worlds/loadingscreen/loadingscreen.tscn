@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7i615dgp108u"]
+
+[ext_resource type="Script" path="res://worlds/loadingscreen/loadingscreen.gd" id="1_mjsje"]
+[ext_resource type="Texture2D" uid="uid://c1kcv3af2yf0d" path="res://images/player/menu/Loadingscreenv1.png" id="2_b6u0t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ya0vy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b6u0t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Loadingscreen" type="Node2D"]
+script = ExtResource("1_mjsje")
+
+[node name="UI" type="CanvasLayer" parent="."]
+editor_description = "Is here because moves when screen size changes!
+Is change able if you solve the problem.
+"
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 58.0
+offset_top = -4.0
+offset_right = 98.0
+offset_bottom = 36.0
+
+[node name="LoadingScreen" type="AnimatedSprite2D" parent="UI/Control"]
+position = Vector2(557.315, 349.844)
+scale = Vector2(0.661675, 0.648208)
+sprite_frames = SubResource("SpriteFrames_ya0vy")
