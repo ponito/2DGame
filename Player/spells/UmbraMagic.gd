@@ -55,7 +55,7 @@ func _process(delta):
 			symbolarray = player.get_node("activeRuneDraw").symbolarray
 			spellbooktest.emit(casttime, player.Ocupied, player.Fokus, player.Stamina,symbolarray)
 			player.get_node("activeRuneDraw").queue_free()
-		elif player.Stamina >= 0 && player.Fokus > 0 && casttime == null && player.Ocupied != 1:
+		elif player.Stamina >= 0 && player.Fokus > 0 && casttime != null && player.Ocupied != 1:
 			activeRuneDraw = runedraw.instantiate()
 			activeRuneDraw.name = "activeRuneDraw"
 			player.add_child(activeRuneDraw)
