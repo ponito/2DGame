@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmaqnjstdio8f"]
+[gd_scene load_steps=8 format=3 uid="uid://1c4kregm7mu0"]
 
-[ext_resource type="Texture2D" uid="uid://df7mvhnrq3qq6" path="res://images/Slime.png" id="1_8esk5"]
-[ext_resource type="Script" path="res://Enemies/slimeblue.gd" id="1_gqoko"]
+[ext_resource type="Script" path="res://Enemies/slimeblue.gd" id="1_2baif"]
+[ext_resource type="Texture2D" uid="uid://df7mvhnrq3qq6" path="res://images/Slime.png" id="2_8wwge"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hx45g"]
 radius = 8.0
 height = 22.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjua4"]
-atlas = ExtResource("1_8esk5")
+atlas = ExtResource("2_8wwge")
 region = Rect2(0, 0, 32, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o0hk7"]
@@ -33,7 +33,7 @@ top_level = true
 scale = Vector2(2, 2)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_gqoko")
+script = ExtResource("1_2baif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
@@ -47,6 +47,7 @@ animation = &"idle"
 
 [node name="EnemyVision" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyVision"]

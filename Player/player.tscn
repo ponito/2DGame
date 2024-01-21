@@ -5893,7 +5893,6 @@ func _process(delta):
 			visible = false
 			timer = null
 		elif timer != null:
-			print(timer)
 			visible = true
 			timer -= delta*45
 			scale = scale* 1.03
@@ -5928,7 +5927,7 @@ func _on_animation_player_animation_finished(anim_name):
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(0, -1)
 scale = Vector2(2, 2)
-collision_layer = 2
+collision_layer = 3
 slide_on_ceiling = false
 script = ExtResource("1_yu86q")
 
@@ -6194,6 +6193,7 @@ scale = Vector2(1.421, 1.424)
 texture = ExtResource("9_wvecq")
 
 [node name="LoadingScreen" type="AnimatedSprite2D" parent="UI/Control"]
+visible = false
 position = Vector2(557.315, 349.844)
 scale = Vector2(0.661675, 0.648208)
 sprite_frames = SubResource("SpriteFrames_i4e73")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dne3470jshe2n"]
+[gd_scene load_steps=7 format=3 uid="uid://dne3470jshe2n"]
 
 [ext_resource type="PackedScene" uid="uid://bf0qqi1cmv0s4" path="res://TileMap.tscn" id="1_1sdfj"]
 [ext_resource type="PackedScene" uid="uid://bqfrw14wap3v2" path="res://Player/player.tscn" id="2_q18dc"]
-[ext_resource type="PackedScene" uid="uid://bmaqnjstdio8f" path="res://Enemies/slimeblue.tscn" id="3_31g8n"]
+[ext_resource type="PackedScene" uid="uid://1c4kregm7mu0" path="res://Enemies/slimeblue.tscn" id="3_31g8n"]
 [ext_resource type="PackedScene" uid="uid://bp4ipb8ajqkg4" path="res://Objects/savepoint.tscn" id="4_vldtn"]
 [ext_resource type="PackedScene" uid="uid://bvjwaxk141qr" path="res://Objects/fallthroughtile.tscn" id="5_gcger"]
+[ext_resource type="PackedScene" uid="uid://bmaqnjstdio8f" path="res://Enemies/cronmiean.tscn" id="6_bc2em"]
 
 [node name="game" type="Node2D"]
 
@@ -59,22 +60,7 @@ position = Vector2(789, -15)
 position = Vector2(2, 2)
 
 [node name="slimeblue" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(877, 377)
+position = Vector2(1675, -63)
 
-[node name="slimeblue2" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(1840, -56)
-
-[node name="slimeblue3" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(2784, -48)
-
-[node name="slimeblue6" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(3432, -792)
-
-[node name="slimeblue5" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(3720, -144)
-
-[node name="slimeblue4" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(1560, 424)
-
-[node name="slimeblue7" parent="enemies" instance=ExtResource("3_31g8n")]
-position = Vector2(3600, 432)
+[node name="cronmiean" parent="enemies" instance=ExtResource("6_bc2em")]
+position = Vector2(796, 396)
