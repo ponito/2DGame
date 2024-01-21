@@ -1,11 +1,12 @@
 extends CharacterBody2D
 @onready var player = get_node("../../player/player")
+@onready var anim = get_node("AnimatedSprite2D")
 var chase = false
 var SPEED = 100
 var JumpTimer = 40
 var JumpTimerBase = 10
 var JumpVelocity= -400
-var Health = 100:
+var Health = 200:
 	get:
 		return Health
 	set(value):
@@ -46,13 +47,28 @@ func _physics_process(delta):
 	if  is_on_floor() && HurtTimer <= 0:
 		if chase == true:
 			var direction = (player.position - self.position).normalized()
+			if velocity.x > 5 or velocity.x < -5:
+				if anim.animation == "idle":
+					anim.stop()
+				anim.play("walk")
+			else:
+				if anim.animation == "walk":
+					anim.stop()
+					anim.play("idle")
+				pass
+				
 			velocity.x = sign(direction.x) * SPEED
-			
 			if velocity.x > 0:
 				get_node("AnimatedSprite2D").flip_h = true
 			else:
 				get_node("AnimatedSprite2D").flip_h = false
-
+	
+	
+	
+	
+	if HurtTimer > 0:
+		anim.stop()
+	
 	move_and_slide()
 
 
@@ -71,4 +87,18 @@ func _on_enemy_vision_body_entered(body):
 func _on_enemy_vision_body_exited(body):
 	if body.name == "player":
 		chase = false
+
+
+
+
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if velocity.x > 1 or velocity.x < -1:
+		pass
+	else:
+		anim.stop()
+		anim.play("idle")
+	pass # Replace with function body.
+
 
