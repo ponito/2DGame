@@ -119,6 +119,7 @@ func _process(delta):
 		if counter > 0:
 			counter -= delta*10
 			if counter < 6.5 and counter > 3.5:
+				shape.monitoring = true
 				shape.scale.y += 0.03
 				shape.scale.x += 0.01
 			if counter < 3.5 and counter > 1.5:
@@ -135,8 +136,7 @@ func _on_cronmiean_arm_attack():
 	get_node(\"../AnimatedSprite2D\").play(\"attack\")
 	visible = true
 	counter = 9
-	shape.monitoring = true
-	rotation = 0
+	rotation = 0.15
 	entity.Ocupied = 1
 	pass # Replace with function body.
 
@@ -147,6 +147,18 @@ func _attack_end():
 	visible = false
 	shape.monitoring = false
 	counter = null
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == \"player\":
+		if body.Invincibility == 0:
+			body.HurtTimer = 0.2
+			body.Invincibility = 0.5
+			var direction = 0
+			direction = (entity.player.position - entity.position).normalized()
+			body.velocity.x = sign(direction.x) * 1300
+			body.Health -= 60
+	pass # Replace with function body.
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b1j6"]
@@ -215,5 +227,6 @@ show_percentage = false
 
 [connection signal="ArmAttack" from="." to="CollisionShape2D/ArmAttack" method="_on_cronmiean_arm_attack"]
 [connection signal="animation_finished" from="CollisionShape2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="CollisionShape2D/ArmAttack/Area2D" to="CollisionShape2D/ArmAttack" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="EnemyVision" to="." method="_on_enemy_vision_body_entered"]
 [connection signal="body_exited" from="EnemyVision" to="." method="_on_enemy_vision_body_exited"]

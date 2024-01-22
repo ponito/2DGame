@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var body = get_node("CollisionShape2D")
 var chase = false
 var SPEED = 100
+var HyperArmor = 100
 var JumpTimer = 40
 var JumpTimerBase = 10
 var JumpVelocity= -400
@@ -108,5 +109,6 @@ func _on_animated_sprite_2d_animation_finished():
 		anim.stop()
 		anim.play("idle")
 	pass # Replace with function body.
+
 
 
