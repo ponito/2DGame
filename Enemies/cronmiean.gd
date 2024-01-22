@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var player = get_node("../../player/player")
-@onready var anim = get_node("AnimatedSprite2D")
+@onready var anim = get_node("CollisionShape2D/AnimatedSprite2D")
+@onready var body = get_node("CollisionShape2D")
 var chase = false
 var SPEED = 100
 var JumpTimer = 40
@@ -22,6 +23,11 @@ var Health = 200:
 
 var HurtTimer = 0
 var direction
+var Ocupied = 0
+signal ArmAttack
+
+
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -34,6 +40,11 @@ func _process(_delta):
 
 
 func _physics_process(delta):
+	if Ocupied < 0:
+		Ocupied = min(0, Ocupied + delta) 
+	
+	
+	
 	#Gravity for the Enemy
 	velocity.y += gravity*2 * delta
 	if is_on_floor():
@@ -44,7 +55,7 @@ func _physics_process(delta):
 		HurtTimer = max(0, HurtTimer - delta*10)
 	
 	#Internal Timer
-	if  is_on_floor() && HurtTimer <= 0:
+	if  is_on_floor() && HurtTimer <= 0 && Ocupied == 0:
 		if chase == true:
 			var direction = (player.position - self.position).normalized()
 			if velocity.x > 5 or velocity.x < -5:
@@ -59,9 +70,9 @@ func _physics_process(delta):
 				
 			velocity.x = sign(direction.x) * SPEED
 			if velocity.x > 0:
-				get_node("AnimatedSprite2D").flip_h = true
+				body.scale.x = -1
 			else:
-				get_node("AnimatedSprite2D").flip_h = false
+				body.scale.x = 1
 	
 	
 	
@@ -70,11 +81,6 @@ func _physics_process(delta):
 		anim.stop()
 	
 	move_and_slide()
-
-
-func jump(direction):
-	velocity.y = JumpVelocity
-	velocity.x = RandomNumberGenerator.new().randf_range(0.6, 1.4) * sign(direction.x) * SPEED
 
 
 
@@ -87,6 +93,7 @@ func _on_enemy_vision_body_entered(body):
 func _on_enemy_vision_body_exited(body):
 	if body.name == "player":
 		chase = false
+		anim.stop()
 
 
 
@@ -94,7 +101,8 @@ func _on_enemy_vision_body_exited(body):
 
 
 func _on_animated_sprite_2d_animation_finished():
-	if velocity.x > 1 or velocity.x < -1:
+	if velocity.x > 1 or velocity.x < -1 and Ocupied == 0:
+		emit_signal("ArmAttack")
 		pass
 	else:
 		anim.stop()

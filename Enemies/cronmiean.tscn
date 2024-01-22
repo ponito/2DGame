@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://bmaqnjstdio8f"]
+[gd_scene load_steps=22 format=3 uid="uid://bmaqnjstdio8f"]
 
 [ext_resource type="Script" path="res://Enemies/cronmiean.gd" id="1_mwh0u"]
 [ext_resource type="Texture2D" uid="uid://c26qj5k6ra6nm" path="res://images/enemies/cronmiean/walk.png" id="2_0f2p3"]
+[ext_resource type="Texture2D" uid="uid://bgqx6v056svis" path="res://images/enemies/cronmiean/attack.png" id="2_fcse5"]
 [ext_resource type="Texture2D" uid="uid://xcauc1uj0kdb" path="res://images/enemies/cronmiean/walk1.png" id="3_kyruy"]
 [ext_resource type="Texture2D" uid="uid://d1g5fyr1h0q0l" path="res://images/enemies/cronmiean/walk2.png" id="4_6t2b7"]
+[ext_resource type="Texture2D" uid="uid://vq2rlphurl5v" path="res://images/enemies/cronmiean/Arm.png" id="6_pr15u"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hx45g"]
-radius = 7.49336
-height = 63.9953
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reogt"]
+size = Vector2(13.1513, 62.4961)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vsigu"]
 atlas = ExtResource("2_0f2p3")
@@ -52,6 +53,14 @@ region = Rect2(96, 0, 32, 64)
 [sub_resource type="SpriteFrames" id="SpriteFrames_o0hk7"]
 animations = [{
 "frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_fcse5")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 1.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vsigu")
 }, {
@@ -92,6 +101,57 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_s886w"]
+script/source = "extends Node2D
+
+@onready var entity = get_node(\"../..\")
+@onready var shape = get_node(\"Area2D\")
+var counter = null
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if counter != null:
+		if counter > 0:
+			counter -= delta*10
+			if counter < 6.5 and counter > 3.5:
+				shape.scale.y += 0.03
+				shape.scale.x += 0.01
+			if counter < 3.5 and counter > 1.5:
+				rotation += -0.2
+				if counter > 2.5:
+					shape.scale.y += 0.005
+		else:
+			_attack_end()
+			pass
+
+
+
+func _on_cronmiean_arm_attack():
+	get_node(\"../AnimatedSprite2D\").play(\"attack\")
+	visible = true
+	counter = 9
+	shape.monitoring = true
+	rotation = 0
+	entity.Ocupied = 1
+	pass # Replace with function body.
+
+func _attack_end():
+	get_node(\"../AnimatedSprite2D\").play(\"idle\")
+	shape.scale = Vector2(1,1)
+	entity.Ocupied = -0.5
+	visible = false
+	shape.monitoring = false
+	counter = null
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8b1j6"]
+size = Vector2(5.21882, 34.534)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_msmcy"]
 radius = 165.037
 
@@ -103,16 +163,38 @@ collision_mask = 5
 script = ExtResource("1_mwh0u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
-rotation = -3.15377
-shape = SubResource("CapsuleShape2D_hx45g")
+position = Vector2(0, -31.5)
+rotation = 3.12942
+shape = SubResource("RectangleShape2D_reogt")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.5, -33)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+rotation = -3.12942
 scale = Vector2(0.994792, 1.02063)
 sprite_frames = SubResource("SpriteFrames_o0hk7")
-animation = &"walk"
+animation = &"idle"
 autoplay = "walk"
+
+[node name="ArmAttack" type="Node2D" parent="CollisionShape2D"]
+visible = false
+position = Vector2(7.91417, 7.0969)
+script = SubResource("GDScript_s886w")
+
+[node name="Area2D" type="Area2D" parent="CollisionShape2D/ArmAttack"]
+position = Vector2(0.00608822, -0.499963)
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D/ArmAttack/Area2D"]
+position = Vector2(0.457345, 3.50583)
+rotation = -1.54514
+scale = Vector2(1.0001, 1)
+texture = ExtResource("6_pr15u")
+centered = false
+offset = Vector2(-32, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/ArmAttack/Area2D"]
+position = Vector2(1.85982, 19.8216)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_8b1j6")
 
 [node name="EnemyVision" type="Area2D" parent="."]
 collision_layer = 0
@@ -124,12 +206,14 @@ shape = SubResource("CircleShape2D_msmcy")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -22.5
-offset_top = -65.5
+offset_top = -74.5
 offset_right = 23.5
-offset_bottom = -58.5
+offset_bottom = -67.5
+max_value = 200.0
 step = 1.0
 show_percentage = false
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="ArmAttack" from="." to="CollisionShape2D/ArmAttack" method="_on_cronmiean_arm_attack"]
+[connection signal="animation_finished" from="CollisionShape2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="EnemyVision" to="." method="_on_enemy_vision_body_entered"]
 [connection signal="body_exited" from="EnemyVision" to="." method="_on_enemy_vision_body_exited"]
