@@ -22,6 +22,7 @@ func _process(_delta):
 			get_node("../../..").Ocupied = 1
 			activeWeaponEffect = weaponEffect.instantiate()
 			activeWeaponEffect.name = "activeWeaponEffect"
+			activeWeaponEffect.scale = Vector2(1.5,1.5)
 			self.add_child(activeWeaponEffect)
 			anim.play("Attack_2")
 			
@@ -32,6 +33,7 @@ func _process(_delta):
 			get_node("../../..").Ocupied = 1
 			activeWeaponEffect = weaponEffect.instantiate()
 			activeWeaponEffect.name = "activeWeaponEffect"
+			activeWeaponEffect.scale = Vector2(1.5,1.5)
 			self.add_child(activeWeaponEffect)
 			anim.play("Attack_2")
 		if not Input.is_action_pressed("Right") and not Input.is_action_pressed("Left"):
