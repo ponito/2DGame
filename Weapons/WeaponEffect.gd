@@ -9,9 +9,14 @@ func _on_ready():
 
 func _on_area_2d_body_entered(body):
 	var direction = (body.position - player.position).normalized()
-	body.position.y += -5
-	body.velocity.y = sign(direction.y) * 0.1 -100
-	body.velocity.x = sign(direction.x) * 300 * weapon.Knockback
+	var KnockBackResist = 0
+	if "KnockBackResist" in body:
+		KnockBackResist = body.KnockBackResist
+	
+	if weapon.Knockback > KnockBackResist:
+		body.position.y += -5
+	body.velocity.y = sign(direction.y) - max(0, 100 -KnockBackResist*100)
+	body.velocity.x = sign(direction.x) * 300 * max(0, weapon.Knockback - KnockBackResist)
 	if "HyperArmor" in body:
 		EnemyHyperArmor = EnemyHyperArmor + body.HyperArmor
 	else:

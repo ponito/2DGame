@@ -104,6 +104,10 @@ animations = [{
 [sub_resource type="GDScript" id="GDScript_s886w"]
 script/source = "extends Node2D
 
+const armattacktime = 10
+const armgrowbegin = armattacktime -0.5
+const armgrowend = armgrowbegin -5
+const armattackend = 2
 @onready var entity = get_node(\"../..\")
 @onready var shape = get_node(\"Area2D\")
 var counter = null
@@ -118,11 +122,11 @@ func _process(delta):
 	if counter != null:
 		if counter > 0:
 			counter -= delta*10
-			if counter < 6.5 and counter > 3.5:
+			if counter < armgrowbegin and counter >= armgrowend:
 				shape.monitoring = true
-				shape.scale.y += 0.03
-				shape.scale.x += 0.01
-			if counter < 3.5 and counter > 2:
+				shape.scale.y += 0.033
+				shape.scale.x += 0.011
+			if counter < armgrowend and counter > armattackend:
 				rotation += -0.15
 				if counter > 2.5:
 					shape.scale.y += 0.005
@@ -135,7 +139,7 @@ func _process(delta):
 func _on_cronmiean_arm_attack():
 	get_node(\"../AnimatedSprite2D\").play(\"attack\")
 	visible = true
-	counter = 9
+	counter = armattacktime 
 	rotation = 0.15
 	entity.Ocupied = 1
 	pass # Replace with function body.

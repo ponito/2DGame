@@ -8,6 +8,7 @@ var HyperArmor = 100
 var JumpTimer = 40
 var JumpTimerBase = 10
 var JumpVelocity= -400
+var KnockBackResist = 5
 var Health = 200:
 	get:
 		return Health
@@ -26,6 +27,11 @@ var HurtTimer = 0
 var direction
 var Ocupied = 0
 var playerMeele = false
+
+
+
+
+
 signal ArmAttack
 
 
