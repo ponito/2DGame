@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bmaqnjstdio8f"]
+[gd_scene load_steps=23 format=3 uid="uid://bmaqnjstdio8f"]
 
 [ext_resource type="Script" path="res://Enemies/cronmiean.gd" id="1_mwh0u"]
 [ext_resource type="Texture2D" uid="uid://c26qj5k6ra6nm" path="res://images/enemies/cronmiean/walk.png" id="2_0f2p3"]
@@ -122,8 +122,8 @@ func _process(delta):
 				shape.monitoring = true
 				shape.scale.y += 0.03
 				shape.scale.x += 0.01
-			if counter < 3.5 and counter > 1.5:
-				rotation += -0.2
+			if counter < 3.5 and counter > 2:
+				rotation += -0.15
 				if counter > 2.5:
 					shape.scale.y += 0.005
 		else:
@@ -150,7 +150,7 @@ func _attack_end():
 
 
 func _on_area_2d_body_entered(body):
-	if body.name == \"player\":
+	if body.name == \"player\" and counter != null:
 		if body.Invincibility == 0:
 			body.HurtTimer = 0.2
 			body.Invincibility = 0.5
@@ -165,7 +165,10 @@ func _on_area_2d_body_entered(body):
 size = Vector2(5.21882, 34.534)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_msmcy"]
-radius = 165.037
+radius = 198.006
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tro7c"]
+radius = 55.1453
 
 [node name="cronmiean" type="CharacterBody2D"]
 top_level = true
@@ -215,6 +218,14 @@ collision_mask = 2
 visible = false
 shape = SubResource("CircleShape2D_msmcy")
 
+[node name="EnemyMeele" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyMeele"]
+position = Vector2(0.5, -24.5)
+shape = SubResource("CircleShape2D_tro7c")
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -22.5
 offset_top = -74.5
@@ -229,3 +240,5 @@ show_percentage = false
 [connection signal="body_entered" from="CollisionShape2D/ArmAttack/Area2D" to="CollisionShape2D/ArmAttack" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="EnemyVision" to="." method="_on_enemy_vision_body_entered"]
 [connection signal="body_exited" from="EnemyVision" to="." method="_on_enemy_vision_body_exited"]
+[connection signal="body_entered" from="EnemyMeele" to="." method="_on_enemy_meele_body_entered"]
+[connection signal="body_exited" from="EnemyMeele" to="." method="_on_enemy_meele_body_exited"]

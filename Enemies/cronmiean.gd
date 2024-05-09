@@ -25,6 +25,7 @@ var Health = 200:
 var HurtTimer = 0
 var direction
 var Ocupied = 0
+var playerMeele = false
 signal ArmAttack
 
 
@@ -57,8 +58,8 @@ func _physics_process(delta):
 	
 	#Internal Timer
 	if  is_on_floor() && HurtTimer <= 0 && Ocupied == 0:
-		if chase == true:
-			var direction = (player.position - self.position).normalized()
+		var direction = (player.position - self.position).normalized()
+		if chase == true and not playerMeele == true:
 			if velocity.x > 5 or velocity.x < -5:
 				if anim.animation == "idle":
 					anim.stop()
@@ -74,7 +75,10 @@ func _physics_process(delta):
 				body.scale.x = -1
 			else:
 				body.scale.x = 1
-	
+		elif playerMeele == true:
+			if direction.x > 0:
+				body.scale.x = -1
+			emit_signal("ArmAttack")
 	
 	
 	
@@ -103,7 +107,7 @@ func _on_enemy_vision_body_exited(body):
 
 func _on_animated_sprite_2d_animation_finished():
 	if velocity.x > 1 or velocity.x < -1 and Ocupied == 0:
-		emit_signal("ArmAttack")
+		##emit_signal("ArmAttack")
 		pass
 	else:
 		anim.stop()
@@ -112,3 +116,16 @@ func _on_animated_sprite_2d_animation_finished():
 
 
 
+
+
+
+func _on_enemy_meele_body_entered(body):
+	if body.name == "player":
+		playerMeele = true
+	pass # Replace with function body.
+
+
+func _on_enemy_meele_body_exited(body):
+	if body.name == "player":
+		playerMeele = false
+	pass # Replace with function body.
