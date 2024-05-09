@@ -16,9 +16,9 @@ var Health = 200:
 		if (0 >= value):
 			self.queue_free()
 		if (Health - value >= 10):
-			HurtTimer = 5
+			HurtTimer = 2
 			if (Health - value >= 40):
-				HurtTimer = 10
+				HurtTimer = 4
 			pass
 		Health = value
 
