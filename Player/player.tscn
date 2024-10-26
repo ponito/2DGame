@@ -5948,7 +5948,6 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/spine", PackedFloat32
 [node name="Weapon" parent="Sprite/armleft" instance=ExtResource("3_wll01")]
 position = Vector2(-3.90913, -4.7539)
 rotation = 2.2946
-scale = Vector2(1, 1)
 
 [node name="Torso" type="Polygon2D" parent="Sprite"]
 visibility_layer = 16
